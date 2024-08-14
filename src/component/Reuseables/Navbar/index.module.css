@@ -1,0 +1,50 @@
+.mainCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: black;
+    color: white;
+
+}
+
+.imageSect{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    padding-left: 0;
+
+}
+
+.imageSect > h1{
+    font-size: 27px;
+    color: #FFFFFF;
+}
+
+.imageSect > img{
+    height: 30px;
+    width: 40px;
+    padding-top: 1.4rem;
+}
+
+.linkCont{
+    display: flex;
+    flex-direction: row;
+    gap: 27px;
+    padding-right: 2rem;
+
+}
+
+.linkCont > p{
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 24px;
+    font-weight: 450;
+    padding-top: 7px;
+}
+
+@media screen and (max-width: 760px)  {
+    .mainCont{
+        display: none
+    }
+
+}

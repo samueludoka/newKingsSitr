@@ -1,0 +1,66 @@
+.mainContent{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #4D4D4D;
+    color: #FFFFFF;
+}
+.div1{
+    text-align: center;
+}
+.graph{
+    padding-left: 10rem;
+    height: 600px;
+}
+.div1 h1{
+    font-size: xxx-large;
+}
+.div1 h3{
+    font-size: xx-large;
+}
+
+.div2{
+    display: flex;
+    padding-left: 10rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    align-content: space-between;
+    gap: 1rem;
+
+}
+.div2 h1 span{
+    color: #61dafb;
+}
+
+.firstRow{
+    display: flex;
+    font-size: xx-large;
+}
+.award{
+    height: 120px;
+    width: auto;
+}
+
+.secondRow{
+    display: flex;
+    font-size: xx-large;
+}
+.happy{
+    height: 120px;
+    width: auto;
+}
+.thirdRow{
+    display: flex;
+    font-size: xx-large;
+}
+.account{
+    height: 120px;
+    width: auto;
+}
+.fourthRow{
+    display: flex;
+    font-size: xx-large;
+}
+.rate{
+    height: 120px;
+    width: auto;
+}

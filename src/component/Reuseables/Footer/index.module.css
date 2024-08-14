@@ -1,0 +1,85 @@
+.mainCont{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    /*padding-left: 5rem;*/
+    /*gap: 12rem;*/
+    justify-content: space-evenly;
+}
+
+.firstDiv{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    padding-left: 0;
+}
+
+.firstDiv > h1{
+    font-size: 27px;
+    color: #FFFFFF;
+}
+
+.firstDiv > img{
+    height: 30px;
+    width: 40px;
+    padding-top: 1.4rem;
+}
+
+.mainDiv > p{
+    color: #FFFFFF;
+    font-size: 0.9rem;
+}
+
+.socialIcon{
+    display: flex;
+    gap: 10px;
+}
+
+.tire{
+    width: 28px;
+    height: 30px;
+    padding-top: 0.2rem;
+}
+
+.youtube{
+    width: 27px;
+    height: 26px;
+    padding-top: 0.4rem;
+    border: #4D4D4D;
+}
+
+.company{
+    color: #FFFFFF;
+}
+
+.companyPara{
+    font-size: 0.9rem;
+}
+
+input{
+    background: #4D4D4D;
+    border: none;
+    padding: 10px 35px 10px 10px;
+    border-radius: 7px;
+
+}
+
+input::placeholder{
+    color: #D9DBE1;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.send {
+    position: absolute;
+    margin-left: -2rem;
+    margin-top: 0.34rem;
+    cursor: pointer;
+
+}
+@media screen and (max-width: 760px) {
+    .mainCont {
+        flex-direction: column;
+    }
+}

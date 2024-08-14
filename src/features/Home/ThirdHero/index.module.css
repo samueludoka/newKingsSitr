@@ -1,0 +1,68 @@
+.mainContent{
+    background-color: black;
+}
+
+.firstDiv h1{
+    font-size: xxx-large;
+    color: #ff960b;
+    text-align: center;
+}
+.firstDiv p{
+    color: #FFFFFF;
+    text-align: center;
+}
+.firstInnerDiv{
+    border-radius:600px;
+    border: 10px double white;
+    padding: 3rem;
+    background-color: #4D4D4D;
+}
+.firstInnerDiv h1{
+    font-size: xx-large;
+    padding-left: 7rem;
+    padding-bottom: 3rem;
+}
+.secondDiv{
+    display: flex;
+    color: #FFFFFF;
+    padding-left: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.secondInnerDiv{
+    border-radius:600px;
+    border: 10px double white;
+    padding: 3rem;
+    background-color: #4D4D4D;
+}
+.secondInnerDiv h1{
+    font-size: xxx-large;
+   text-align: center;
+    padding-bottom: 2rem;
+}
+.secondInnerDiv p{
+    text-align: center;
+}
+
+
+.thirdInnerDiv{
+    border-radius:600px;
+    border: 10px double white;
+    padding: 5rem;
+    background-color: #4D4D4D;
+}
+.thirdInnerDiv h1{
+    font-size: xxx-large;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.thirdInnerDiv p{
+    text-align: center;
+}
+.arrows{
+    height: 70px;
+    width: auto;
+    margin-top: 15rem;
+
+}
+

@@ -1,0 +1,29 @@
+.mainContent{
+    color: #FFFFFF;
+    background-color: black;
+    font-size: x-large;
+    padding-left: 5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+.input1{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-content: space-evenly;
+
+}
+.inputs {
+    border: 10px double white;
+    padding: 1rem;
+    border-radius: 20px;
+    width: 40rem;
+}
+.inputs input{
+    padding: 1rem;
+}
+.message{
+    width: auto;
+    height: 10rem;
+}

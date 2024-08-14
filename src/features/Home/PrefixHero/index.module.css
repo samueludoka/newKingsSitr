@@ -1,0 +1,24 @@
+.mainContent{
+    background-color: black;
+    display: flex;
+    /*color: #FFFFFF;*/
+}
+.world{
+    padding-left: 4rem;
+}
+.word h1{
+    font-size: xxx-large;
+    color: #ff960b;
+    text-align: center;
+    padding-right: 10rem;
+    margin-top: 2rem;
+
+}
+.word p{
+    color: #FFFFFF;
+    font-size: x-large;
+    text-align: center;
+    margin-top: 2rem;
+    padding-right: 10rem;
+
+}

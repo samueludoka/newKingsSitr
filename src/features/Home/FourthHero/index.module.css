@@ -1,0 +1,54 @@
+.mainContent{
+    background-color: black;
+    display: flex;
+    align-content: space-evenly;
+    gap: 5rem;
+    padding-left: 10rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+}
+/*.firstDiv{*/
+/*    padding-bottom: 5rem;*/
+/*    padding-top: 5rem;*/
+/*}*/
+.firstDiv h1{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: xxx-large;
+}
+.firstDiv h1 span{
+    color: #ff960b;
+}
+.firstDiv h2{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: large;
+}
+.linedWords{
+    color: #FFFFFF;
+    font-size: medium;padding-top: 3rem;
+}
+.linedWords p span{
+    font-weight: bold;
+}
+.calculator{
+    border: 2px double  #ff960b;
+    border-radius: 5rem;
+    padding: 3rem;
+    background-color: orange;
+}
+.div1{
+    font-size: x-large;
+    font-weight: bold;
+}
+.secDiv{
+    font-size: large;
+    font-family: SansSerif;
+}
+.thirdDiv{
+    font-size: large;
+    font-family: SansSerif;
+}
+.Div2{
+    font-size: small;
+}
