@@ -1,0 +1,160 @@
+/*!* Register.module.css *!*/
+/*.container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    min-height: 100vh;*/
+/*    background-color: #95c5f3;*/
+/*    !*max-width: 1200px;*!*/
+
+
+/*}*/
+
+/*.wrapper {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: auto;*/
+/*    max-width: 1200px;*/
+/*    !*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);*!*/
+/*}*/
+
+.formSection {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    width: 100%;
+    /*max-width: 5000px;*/
+    background-color: #0c2848;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.inputGroup {
+    margin-bottom: 1rem;
+}
+
+.inputGroup label {
+    display: block;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.inputGroup input,
+.inputGroup select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+    outline: none;
+    /*border-color: #63b3ed;*/
+    color: black;
+}
+
+.button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    /*background-color: #63b3ed;*/
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #4ce017;
+}
+
+.toggleButton {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    transition: none;
+}
+
+.toggleButton:hover {
+    background: none;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.toggleButton:focus {
+    outline: none;
+}
+
+.toggleButton:active {
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #718096;
+}
+
+.link button {
+    font-weight: bold;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.link button:hover {
+    color: #63b3ed;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        flex-direction: row;
+    }
+
+    .formSection {
+        max-width: 600px;
+    }
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    width: auto;
+    background-color: #0a4686;
+}
+.image{
+    width: 100%;
+    border-radius: 10px;
+    height: 250px;
+}

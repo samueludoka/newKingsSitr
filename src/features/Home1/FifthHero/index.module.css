@@ -1,0 +1,119 @@
+.mainContent {
+    padding: 5%; /* Adjust padding for smaller screens */
+    background-color: #4D4D4D;
+    color: #FFFFFF;
+}
+
+.div1 {
+    text-align: center;
+}
+.chartContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chartContainer h2 {
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+}
+
+canvas {
+    max-height: 400px;
+}
+
+.chartContainer p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+}
+
+
+.graph {
+
+    max-width: 100%; /* Ensure the graph is responsive */
+    height: 600px; /* Increase height for visibility */
+    object-fit: contain; /* Maintain aspect ratio */
+    margin: 0 auto;
+}
+
+.div1 h1 {
+    font-size: 2.5rem; /* Adjust font size */
+}
+
+.div1 h3 {
+    font-size: 1.5rem; /* Adjust font size */
+}
+
+.div2 {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-around; /* Space out items */
+    padding: 2rem 1rem; /* Adjust padding */
+    gap: 1rem;
+}
+
+.div2 h1 span {
+    color: #61dafb;
+}
+
+.row {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center items */
+    font-size: 1.5rem; /* Adjust font size */
+    text-align: center; /* Center text */
+}
+
+.row img {
+    height: 80px; /* Adjust image size */
+    width: auto;
+    margin-bottom: 0.5rem; /* Space below Images */
+}
+
+/* Responsive Styles for Different Screen Sizes */
+@media (min-width: 768px) {
+    .div1 h1 {
+        .graph{
+            height: 400px;
+        }
+        font-size: 3rem; /* Larger heading on larger screens */
+    }
+
+    .div1 h3 {
+        font-size: 2rem; /* Larger subheading */
+    }
+
+    .row {
+        flex-direction: row; /* Align items horizontally on larger screens */
+        align-items: center; /* Center items */
+    }
+
+    .div2 {
+        padding: 5rem 12rem; /* Add padding for larger screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .graph{
+        height: 240px;
+        width: 400px;
+    }
+    .div1 h1 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .div1 h3 {
+        font-size: 1.2rem; /* Smaller subheading */
+    }
+
+    .div2 h1 {
+        font-size: 1.2rem; /* Smaller heading size */
+    }
+}

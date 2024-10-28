@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    padding-top: 5%;
+    background-color: #174f46;
+}
+.image {
+    height: 35vh;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form {
+    background-color: white; /* White background for the form */
+    padding: 24px; /* Padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%; /* Full width */
+    max-width: 400px; /* Max width for larger screens */
+}
+
+.title {
+    font-size: 2rem; /* Font size for the title */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 1.5rem; /* Margin below the title */
+    color: #4a5568; /* Dark gray color */
+}
+
+.inputGroup {
+    margin-bottom: 1rem; /* Margin below each input group */
+}
+
+.label {
+    display: block; /* Block display for label */
+    font-size: 0.875rem; /* Font size for label */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 0.5rem; /* Margin below label */
+    color: #4a5568; /* Dark gray color */
+}
+
+.input {
+    width: 100%; /* Full width for input */
+    padding: 10px; /* Padding inside the input */
+    border: 1px solid #cbd5e0; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.2s; /* Smooth border color transition */
+}
+
+.input:focus {
+    outline: none; /* Remove default outline */
+    border-color: #3182ce; /* Change border color on focus */
+    color: #FFFFFF;
+}
+
+.submitButton {
+    width: 100%; /* Full width for submit button */
+    padding: 10px; /* Padding inside button */
+    background-color: #3182ce; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth background color transition */
+}
+
+.submitButton:hover {
+    background-color: rgb(68, 236, 21); /* Darker blue on hover */
+}
+
+.footer {
+    margin-top: 1rem; /* Margin above footer */
+    text-align: center; /* Center text */
+}
+
+.reminderText {
+    color: #4a5568; /* Dark gray color */
+}
+
+.link {
+    color: black; /* Blue color for the link */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-decoration: underline; /* Underline text */
+    background: none;
+}
+
+.link:hover {
+    text-decoration: none; /* Remove underline on hover */
+}

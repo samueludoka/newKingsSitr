@@ -1,54 +1,157 @@
-.mainContent{
-    background-color: black;
-    display: flex;
-    align-content: space-evenly;
-    gap: 5rem;
-    padding-left: 10rem;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
-}
-/*.firstDiv{*/
+/*.mainContent{*/
+/*    background-color: black;*/
+/*    display: flex;*/
+/*    align-content: space-evenly;*/
+/*    gap: 5rem;*/
+/*    padding-left: 13rem;*/
 /*    padding-bottom: 5rem;*/
 /*    padding-top: 5rem;*/
 /*}*/
-.firstDiv h1{
-    text-align: center;
-    color: #FFFFFF;
-    font-size: xxx-large;
+/*!*.firstDiv{*!*/
+/*!*    padding-bottom: 5rem;*!*/
+/*!*    padding-top: 5rem;*!*/
+/*!*}*!*/
+/*.firstDiv h1{*/
+/*    text-align: center;*/
+/*    color: #FFFFFF;*/
+/*    font-size: xxx-large;*/
+/*}*/
+/*.firstDiv h1 span{*/
+/*    color: #ff960b;*/
+/*}*/
+/*.firstDiv h2{*/
+/*    text-align: center;*/
+/*    color: #FFFFFF;*/
+/*    font-size: large;*/
+/*}*/
+/*.linedWords{*/
+/*    color: #FFFFFF;*/
+/*    font-size: medium;padding-top: 3rem;*/
+/*}*/
+/*.linedWords p span{*/
+/*    font-weight: bold;*/
+/*}*/
+/*.calculator{*/
+/*    border: 2px double  #ff960b;*/
+/*    border-radius: 5rem;*/
+/*    padding: 3rem;*/
+/*    background-color: orange;*/
+/*}*/
+/*.div1{*/
+/*    font-size: x-large;*/
+/*    font-weight: bold;*/
+/*}*/
+/*.secDiv{*/
+/*    font-size: large;*/
+/*    font-family: SansSerif;*/
+/*}*/
+/*.thirdDiv{*/
+/*    font-size: large;*/
+/*    font-family: SansSerif;*/
+/*}*/
+/*.Div2{*/
+/*    font-size: small;*/
+/*}*/
+
+.mainContent {
+    background-color: black;
+    display: block;
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center; /* Center items */
+    padding: 5%;
+    background-image: url(Images/img.png);
 }
-.firstDiv h1 span{
+
+.firstDiv {
+    text-align: center;
+    padding-bottom: 2rem; /* Add space below the firstDiv */
+}
+
+.firstDiv h1 {
+    color: #FFFFFF;
+    font-size: 65px; /* Adjusted for smaller screens */
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.firstDiv h1 span {
     color: #ff960b;
 }
-.firstDiv h2{
-    text-align: center;
+
+.firstDiv h2 {
     color: #FFFFFF;
-    font-size: large;
+    font-size: 1.5rem; /* Adjusted for smaller screens */
 }
-.linedWords{
+
+.linedWords {
     color: #FFFFFF;
-    font-size: medium;padding-top: 3rem;
+    font-size: 1rem; /* Adjusted for smaller screens */
+    padding-top: 1rem; /* Reduced padding */
+    text-align: left; /* Align text to the left */
 }
-.linedWords p span{
+
+.linedWords p span {
     font-weight: bold;
+    font-family: Arial;
+    font-size: 25px;
 }
-.calculator{
-    border: 2px double  #ff960b;
-    border-radius: 5rem;
-    padding: 3rem;
+.videoCointainer{
+   width: 1200px;
+    height: 600px;
+}
+.videoCointainermMain{
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    border: 2px double #ff960b;
+    border-radius: 2rem;
+    padding: 2rem; /* Adjusted padding */
     background-color: orange;
+    width: 90%; /* Make the calculator responsive */
+    max-width: 400px; /* Limit maximum width */
 }
-.div1{
-    font-size: x-large;
+
+.div1 {
+    font-size: 1.5rem; /* Adjusted font size for smaller screens */
     font-weight: bold;
 }
-.secDiv{
-    font-size: large;
+
+.secDiv,
+.thirdDiv {
+    font-size: 1.2rem; /* Adjusted font size */
     font-family: SansSerif;
 }
-.thirdDiv{
-    font-size: large;
-    font-family: SansSerif;
+
+.Div2 {
+    font-size: 0.9rem; /* Adjusted font size for smaller screens */
 }
-.Div2{
-    font-size: small;
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .mainContent {
+        flex-direction: row; /* Stack items horizontally on larger screens */
+        align-content: space-evenly; /* Space evenly on larger screens */
+        gap: 5rem; /* Maintain gap between items */
+        padding: 5rem; /* Maintain padding for larger screens */
+    }
+
+    .firstDiv h1 {
+        font-size: 3rem; /* Larger heading on larger screens */
+    }
+
+    .firstDiv h2 {
+        font-size: 1.8rem; /* Larger subheading */
+    }
+
+    .linedWords {
+        font-size: 1.2rem; /* Larger text on larger screens */
+    }
+
+    .calculator {
+        padding: 3rem; /* Maintain padding for larger screens */
+    }
 }

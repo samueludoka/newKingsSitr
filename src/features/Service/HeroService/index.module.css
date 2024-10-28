@@ -1,0 +1,79 @@
+/* Main container styling */
+.mainContent {
+    background-color: #0D1117; /* Dark background */
+    color: #FFFFFF; /* White text */
+    /*padding: 2rem 3rem; */
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+.heroImage{
+    width: 1500px;
+    height: 400px;
+}
+
+/* Large screen header styling */
+.header {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    padding-left: 5%;
+    text-align: center;
+}
+.tail{
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Paragraph text styling */
+.mainContent p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding-left: 5%;
+
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .mainContent {
+        padding: 2rem;
+    }
+
+    .header {
+        font-size: 2.5rem;
+    }
+
+    .mainContent p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        padding: 1.5rem;
+    }
+
+    .header {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .mainContent p {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .mainContent {
+        padding: 1rem;
+    }
+
+    .header {
+        font-size: 1.8rem;
+    }
+
+    .mainContent p {
+        font-size: 0.9rem;
+    }
+}

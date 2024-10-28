@@ -1,50 +1,145 @@
-.mainCont{
+/* Main container for the navbar */
+/* Main container for the navbar */
+.mainCont {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: black;
-    color: white;
-
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    position: fixed;  /* Change to fixed to stick it to the top */
+    top: 0;           /* Stick to the top of the page */
+    width: 100%;      /* Make sure it spans the entire width */
+    z-index: 999;     /* Ensure it stays on top of other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for visibility */
 }
 
-.imageSect{
-    display: flex;
-    flex-direction: row;
-    gap: 0.3rem;
-    padding-left: 0;
+.mainButton{
 
-}
+    background-color: white; /* Green background */
+    color: black;              /* White text */
+    padding: 15px 30px;        /* Padding (top-bottom and left-right) */
+    font-size: 21px;           /* Font size */
+    border: 2px solid black;              /* Remove border */
+    width: 200px;
+    height: 60px;
+    border-radius: 8px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 
-.imageSect > h1{
-    font-size: 27px;
-    color: #FFFFFF;
-}
 
-.imageSect > img{
-    height: 30px;
-    width: 40px;
-    padding-top: 1.4rem;
-}
-
-.linkCont{
-    display: flex;
-    flex-direction: row;
-    gap: 27px;
-    padding-right: 2rem;
-
-}
-
-.linkCont > p{
-    font-size: 18px;
-    color: #FFFFFF;
-    line-height: 24px;
-    font-weight: 450;
-    padding-top: 7px;
-}
-
-@media screen and (max-width: 760px)  {
-    .mainCont{
-        display: none
+    /* Hover effect */
+    .styled-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.05);    /* Slightly enlarge the button */
     }
 
+    /* Active state */
+    .styled-button:active {
+        background-color: #3e8e41; /* Even darker green on click */
+        transform: scale(0.98);    /* Slightly shrink on click */
+    }
+
+}
+
+/* Logo and title section */
+.imageSect {
+    display: flex;
+    align-items: center;
+}
+
+.imageSect img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.imageSect h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation links for desktop view */
+.linkCont {
+    display: flex;
+    gap: 30px;
+}
+
+.linkCont p {
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.linkCont p:hover {
+    color: #4CAF50;
+}
+
+/* Button section */
+.buttonSect {
+    display: block;
+}
+
+/* Mobile menu icon (hidden by default on large screens) */
+.menu {
+    display: none;
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+    /* Hide desktop navigation links */
+    .linkCont {
+        display: none;
+    }
+
+    /* Show mobile menu icon */
+    .menu {
+        display: block;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .menuIcon {
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    /* Dropdown mobile menu */
+    .insideMenu {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: #333;
+        border-radius: 5px;
+        padding: 20px;
+        width: 200px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .insideMenu p {
+        font-size: 18px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        color: white;
+        transition: color 0.3s ease;
+    }
+
+    .insideMenu p:hover {
+        color: #4CAF50;
+    }
+}
+
+/* Styling for screens larger than 768px (desktop view) */
+@media screen and (min-width: 769px) {
+    /* Ensure menu links are displayed in a row */
+    .mainCont {
+        flex-direction: row;
+    }
+
+    .linkCont {
+        display: flex;
+    }
+
+    .menu {
+        display: none; /* Hide mobile menu icon */
+    }
 }

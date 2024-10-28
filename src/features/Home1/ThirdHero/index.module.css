@@ -1,0 +1,135 @@
+.mainContent {
+    background-color: #3a3838;
+    padding: 5%;
+}
+
+.firstDiv h1 {
+    color: #ff960b;
+    text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.firstDiv p {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial;
+}
+.firstInnerDiv,
+.thirdInnerDiv {
+    border-radius: 30px;
+    padding: 1rem;
+    background-color: #4D4D4D;
+    margin: 1rem;
+    box-sizing: content-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth zoom and shadow transitions */
+}
+.secondInnerDiv{
+    border-radius: 30px;
+    background-color: #4D4D4D;
+    padding: 1rem;
+    border: #4D4D4D;
+    width: 350px;
+    height: auto;
+}
+
+/* On hover: apply zoom effect and highlight */
+.firstInnerDiv:hover,
+.secondInnerDiv:hover,
+.thirdInnerDiv:hover {
+    transform: scale(1.05); /* Zoom in effect */
+    /*box-shadow: 0 0 20px #ff960b; !* Highlight with orange glow *!*/
+    border: solid gold;
+}
+
+/* Adjust heading styles */
+.firstInnerDiv h1,
+.secondInnerDiv h1,
+.thirdInnerDiv h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Flexbox for secondDiv */
+.secondDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFFFFF;
+    padding: 2rem;
+}
+.images{
+    display: flex;
+    gap: 50px;
+    padding-top: 10px;
+}
+.invest1{
+    height: 80px;
+    width: auto;
+}
+.invest2{
+    height: 80px;
+    width: auto;
+}
+
+
+.arrows {
+    height: 70px;
+    width: auto;
+    margin: 1rem 0; /* Space above and below arrows */
+}
+
+/* Desktop layout */
+@media (min-width: 769px) {
+    .secondDiv {
+        flex-direction: row; /* Row layout on larger screens */
+        justify-content: center; /* Center items horizontally */
+    }
+
+    .arrows {
+        margin: 0 1rem; /* Add horizontal spacing around arrows */
+    }
+}
+
+/* Responsive Styles for Different Screen Sizes */
+@media (max-width: 768px) {
+    .firstDiv h1 {
+        font-size: 2rem; /* Smaller heading on tablets */
+    }
+
+    .firstInnerDiv,
+    .secondInnerDiv,
+    .thirdInnerDiv {
+        flex: 1 1 100%; /* Full width on smaller screens */
+        margin: 1rem 0; /* Space between items */
+    }
+
+    .arrows {
+        margin: 1rem 0; /* Adjust spacing for mobile */
+        transform: rotate(90deg); /* Rotate arrows for vertical alignment */
+    }
+}
+
+@media (max-width: 480px) {
+    .firstDiv h1 {
+        font-size: 1.5rem; /* Smaller heading on mobile */
+    }
+
+    .firstDiv p {
+        font-size: 0.9rem; /* Smaller paragraph text */
+    }
+
+    .firstInnerDiv h1,
+    .secondInnerDiv h1,
+    .thirdInnerDiv h1 {
+        font-size: 1.5rem; /* Adjusted heading size for mobile */
+    }
+
+    .secondInnerDiv p,
+    .thirdInnerDiv p {
+        font-size: 0.8rem; /* Adjusted paragraph size */
+    }
+}

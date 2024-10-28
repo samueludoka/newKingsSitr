@@ -10,9 +10,11 @@ const SecondHero = () =>{
         <div className={styles.mainContent} >
             <div className={styles.firstDiv}>
                 <h1>Tailor-made crypto ETPs to meet your needs.</h1>
-                <p>As more and more alternative investments become available, investors are looking for next-level diversification.<br/>
+                <div className={styles.pdiv}>
+                <p>As more and more alternative investments become available, investors are looking for next-level diversification.
                     This is where Bitcoin Capital can accompany you and launch your own crypto ETP alongside with you, so that you can focus on your core business.</p>
-            </div>
+                </div>
+             </div>
             <div className={styles.secondDiv}>
                 <div className={styles.firstRow}>
                     <div className={styles.bill1}>

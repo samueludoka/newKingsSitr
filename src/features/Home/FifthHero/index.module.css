@@ -1,66 +1,159 @@
-.mainContent{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+/*.mainContent{*/
+/*    padding-top: 2rem;*/
+/*    padding-bottom: 2rem;*/
+/*    background-color: #4D4D4D;*/
+/*    color: #FFFFFF;*/
+/*}*/
+/*.div1{*/
+/*    text-align: center;*/
+/*}*/
+/*.graph{*/
+/*    padding-left: 10rem;*/
+/*    height: 600px;*/
+/*}*/
+/*.div1 h1{*/
+/*    font-size: xxx-large;*/
+/*}*/
+/*.div1 h3{*/
+/*    font-size: xx-large;*/
+/*}*/
+
+/*.div2{*/
+/*    display: flex;*/
+/*    padding-left: 12rem;*/
+/*    padding-bottom: 5rem;*/
+/*    padding-top: 5rem;*/
+/*    align-content: space-between;*/
+/*    gap: 1rem;*/
+
+/*}*/
+/*.div2 h1 span{*/
+/*    color: #61dafb;*/
+/*}*/
+
+/*.firstRow{*/
+/*    display: flex;*/
+/*    font-size: xx-large;*/
+/*}*/
+/*.award{*/
+/*    height: 120px;*/
+/*    width: auto;*/
+/*}*/
+
+/*.secondRow{*/
+/*    display: flex;*/
+/*    font-size: xx-large;*/
+/*}*/
+/*.happy{*/
+/*    height: 120px;*/
+/*    width: auto;*/
+/*}*/
+/*.thirdRow{*/
+/*    display: flex;*/
+/*    font-size: xx-large;*/
+/*}*/
+/*.account{*/
+/*    height: 120px;*/
+/*    width: auto;*/
+/*}*/
+/*.fourthRow{*/
+/*    display: flex;*/
+/*    font-size: xx-large;*/
+/*}*/
+/*.rate{*/
+/*    height: 120px;*/
+/*    width: auto;*/
+/*}*/
+
+.mainContent {
+    padding: 2rem 1rem; /* Adjust padding for smaller screens */
     background-color: #4D4D4D;
     color: #FFFFFF;
 }
-.div1{
+
+.div1 {
     text-align: center;
 }
-.graph{
-    padding-left: 10rem;
-    height: 600px;
-}
-.div1 h1{
-    font-size: xxx-large;
-}
-.div1 h3{
-    font-size: xx-large;
+
+.graph {
+
+    max-width: 100%; /* Ensure the graph is responsive */
+    height: 600px; /* Increase height for visibility */
+    object-fit: contain; /* Maintain aspect ratio */
+    margin: 0 auto;
 }
 
-.div2{
+.div1 h1 {
+    font-size: 2.5rem; /* Adjust font size */
+}
+
+.div1 h3 {
+    font-size: 1.5rem; /* Adjust font size */
+}
+
+.div2 {
     display: flex;
-    padding-left: 10rem;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
-    align-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-around; /* Space out items */
+    padding: 2rem 1rem; /* Adjust padding */
     gap: 1rem;
-
 }
-.div2 h1 span{
+
+.div2 h1 span {
     color: #61dafb;
 }
 
-.firstRow{
+.row {
     display: flex;
-    font-size: xx-large;
-}
-.award{
-    height: 120px;
-    width: auto;
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center items */
+    font-size: 1.5rem; /* Adjust font size */
+    text-align: center; /* Center text */
 }
 
-.secondRow{
-    display: flex;
-    font-size: xx-large;
-}
-.happy{
-    height: 120px;
+.row img {
+    height: 80px; /* Adjust image size */
     width: auto;
+    margin-bottom: 0.5rem; /* Space below Images */
 }
-.thirdRow{
-    display: flex;
-    font-size: xx-large;
+
+/* Responsive Styles for Different Screen Sizes */
+@media (min-width: 768px) {
+    .div1 h1 {
+        .graph{
+            height: 400px;
+        }
+        font-size: 3rem; /* Larger heading on larger screens */
+    }
+
+    .div1 h3 {
+        font-size: 2rem; /* Larger subheading */
+    }
+
+    .row {
+        flex-direction: row; /* Align items horizontally on larger screens */
+        align-items: center; /* Center items */
+    }
+
+    .div2 {
+        padding: 5rem 12rem; /* Add padding for larger screens */
+    }
 }
-.account{
-    height: 120px;
-    width: auto;
-}
-.fourthRow{
-    display: flex;
-    font-size: xx-large;
-}
-.rate{
-    height: 120px;
-    width: auto;
+
+@media (max-width: 480px) {
+    .graph{
+        height: 240px;
+        width: 400px;
+    }
+    .div1 h1 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .div1 h3 {
+        font-size: 1.2rem; /* Smaller subheading */
+    }
+
+    .div2 h1 {
+        font-size: 1.2rem; /* Smaller heading size */
+    }
 }

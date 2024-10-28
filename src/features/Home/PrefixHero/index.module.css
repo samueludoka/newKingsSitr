@@ -1,24 +1,84 @@
-.mainContent{
+.mainContent {
     background-color: black;
     display: flex;
-    /*color: #FFFFFF;*/
+    background-image: url(images/img_2.png);
+    padding:  5%;
+
 }
-.world{
-    padding-left: 4rem;
+
+.world {
+    width: 80%; /* Adjust image size for responsiveness */
+    max-width: 400px; /* Limit the maximum size */
+    height: auto;
+    margin-bottom: 2rem; /* Space between image and text */
+    align-items: center;
 }
-.word h1{
-    font-size: xxx-large;
+
+.word h1 {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: Arial;
     color: #ff960b;
     text-align: center;
-    padding-right: 10rem;
-    margin-top: 2rem;
-
+    margin: 0;
+    padding-top: 2rem;
 }
-.word p{
-    color: #FFFFFF;
-    font-size: x-large;
-    text-align: center;
-    margin-top: 2rem;
-    padding-right: 10rem;
 
+.word p {
+    color: #FFFFFF;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    margin-top: 2rem;
+    line-height: 1.6;
+}
+
+/* Responsive Styles for Different Screen Sizes */
+@media (max-width: 1024px) {
+    .mainContent {
+        flex-direction: column;
+    }
+
+    .word h1 {
+        font-size: 2rem; /* Decrease heading font size */
+        padding-right: 0;
+    }
+
+    .word p {
+        font-size: 1rem;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .world {
+        width: 70%; /* Reduce image size on smaller devices */
+    }
+
+    .word h1 {
+        font-size: 1.8rem; /* Further decrease heading size */
+    }
+
+    .word p {
+        font-size: 0.9rem; /* Adjust paragraph size */
+    }
+}
+
+@media (max-width: 480px) {
+    .mainContent {
+        padding: 0.5rem;
+    }
+
+    .world {
+        width: 90%; /* Image takes most of the screen width */
+    }
+
+    .word h1 {
+        font-size: 1.5rem;
+    }
+
+    .word p {
+        font-size: 0.8rem;
+        line-height: 1.4; /* Adjust line-height for readability */
+    }
 }

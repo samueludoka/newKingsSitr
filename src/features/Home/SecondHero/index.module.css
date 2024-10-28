@@ -1,113 +1,181 @@
-.mainContent{
+.mainContent {
     background-color: black;
+    padding: 5%; /* Overall padding */
+    /*background-image: url(Images/img_6.png);*/
+
 }
+
 .firstDiv {
     color: #FFFFFF;
     text-align: center;
+    margin-bottom: 3rem; /* Space below the header section */
 }
-.firstDiv h1{
+
+.firstDiv h1 {
     color: #ff960b;
-    font-size: xxx-large;
-}
-.secondDiv{
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    color: #FFFFFF;
+    font-size: 65px;
+    font-family: Arial;
+    font-weight: bold;
 
 }
-
-.firstRow{
-    display: flex;
-    align-content: space-around;
-    padding-left: 15rem;
-    gap: 7rem;
-
-}
-.bill1{
-    border-radius:20px;
-    border: 10px double white;
-    padding: 3rem;
-    background-color: gray;
-}
-.text1{
+.firstDiv p {
+    font-size: 25px;
+    font-family: Arial;
+    width: 1200px;
     text-align: center;
 }
-.text1 h3{
-    font-size: x-large;
-}
-.img1{
-    padding-left: 4rem;
-    padding-bottom: 2rem;
-}
-.bill2{
-    border-radius:20px;
-    border: 10px double white;
-    padding: 3rem;
-    background-color: gray;
 
-}
-.img2{
-    padding-left: 3rem;
-    padding-bottom: 2rem;
-}
-.bill3{
-    border-radius:20px;
-    border: 10px double white;
-    padding: 3rem;
-    background-color: gray;
-
-}
-.img3{
-    padding-left: 3rem;
-    padding-bottom: 2rem;
-
-}
-
-
-
-.secondRow{
+.pdiv {
     display: flex;
-    align-content: space-around;
-    padding-left: 15rem;
-    gap: 7rem;
-    padding-top: 5rem;
-
+    justify-content: center;
+    align-items: center;
 }
-.bill4{
-    border-radius:20px;
+
+.secondDiv {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Fixed height to fit the slider area */
+    overflow: hidden; /* Hide overflowing bills */
+    background-color: #000; /* Black background */
+    color: black;
+}
+
+.firstRow,
+.secondRow {
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    padding: 0 1rem; /* Add horizontal padding */
+    gap: 2rem; /* Space between items */
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.bill1,
+.bill2,
+.bill3,
+.bill4,
+.bill5,
+.bill6 {
+    position: absolute;
+    width: 600px;
+    height: 100%;
+    border-radius: 20px;
     border: 10px double white;
-    padding: 3rem;
     background-color: gray;
-
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateX(100%); /* Start off-screen to the right */
+    transition: opacity 3s ease, transform 3s ease;
 }
-.text1{
+
+.text1 {
     text-align: center;
-}
-.img4{
-    padding-left: 4rem;
-    padding-bottom: 2rem;
-}
-.bill5{
-    border-radius:20px;
-    border: 10px double white;
-    padding: 3rem;
-    background-color: gray;
-
-}
-.img5{
-    padding-left: 3rem;
-    padding-bottom: 2rem;
-}
-.bill6{
-    border-radius:20px;
-    border: 10px double white;
-    padding: 3rem;
-    background-color: gray;
-
-}
-.img6{
-    padding-left: 5rem;
-    padding-bottom: 2rem;
+    font-size: 1rem;
 }
 
+.text1 h3 {
+    font-size: 50px; /* Adjusted font size */
+}
+.text1 p {
+    font-size: 25px; /* Adjusted font size */
+}
 
+.img1,
+.img2,
+.img3,
+.img4,
+.img5,
+.img6 {
+    display: block; /* Ensures Images are centered */
+    margin: 0 auto; /* Center Images */
+    padding-bottom: 1rem; /* Reduced padding */
+    width: 80px; /* Image size */
+    height: 80px; /* Image size */
+}
+@keyframes slideBills {
+    0% {
+        opacity: 0;
+        transform: translateX(100%); /* Start off-screen (right) */
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0); /* Bill slides in */
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(0); /* Bill stays fully visible */
+    }
+    40% {
+        opacity: 0;
+        transform: translateX(-100%); /* Bill slides out to the left */
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%); /* Completely off-screen (left) */
+    }
+}
+.bill1 {
+    animation: slideBills 18s infinite;
+}
+
+.bill2 {
+    animation: slideBills 18s infinite 10s;
+}
+
+.bill3 {
+    animation: slideBills 18s infinite 15s;
+}
+
+.bill4 {
+    animation: slideBills 18s infinite 20s;
+}
+
+.bill5 {
+    animation: slideBills 18s infinite 25s;
+}
+
+.bill6 {
+    animation: slideBills 18s infinite 30s;
+}
+
+/* Responsive Styles for Different Screen Sizes */
+@media (max-width: 768px) {
+    .firstDiv h1 {
+        font-size: 2rem; /* Smaller heading on tablets */
+    }
+
+    .text1 h3 {
+        font-size: 1.2rem; /* Smaller subheadings */
+    }
+
+    .firstRow,
+    .secondRow {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .bill1,
+    .bill2,
+    .bill3,
+    .bill4,
+    .bill5,
+    .bill6 {
+        width: 100%; /* Full width on small screens */
+        max-width: 300px; /* Limit width */
+        margin-bottom: 1.5rem; /* Space below each bill */
+    }
+}
+
+@media (max-width: 480px) {
+    .firstDiv h1 {
+        font-size: 1.5rem; /* Smaller heading on mobile */
+    }
+
+    .text1 h3 {
+        font-size: 1rem; /* Smaller subheadings */
+    }
+}

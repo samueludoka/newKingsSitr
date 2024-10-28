@@ -1,0 +1,94 @@
+/* Main container */
+.mainContain {
+    background-color: blue; /* Background color */
+    color: #FFFFFF; /* Text color */
+    /*padding: 2rem; !* Padding for all screens *!*/
+    /*max-width: 12000px; !* Corrected max width for larger screens *!*/
+    margin: 0 auto; /* Center the container */
+    /*display: flex; !* Use flexbox for layout *!*/
+    flex-direction: row; /* Default to stacking elements side by side */
+    align-items: center; /* Center content vertically */
+}
+
+/* Hero words */
+.heroWord {
+    padding-top: 5rem;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.herodiv{
+    display: flex;
+
+}
+.background{
+    width: 1400px;
+    height: 400px;
+}
+
+/* Subheading */
+.subHead {
+    font-size: 2rem; /* Font size for subheading */
+    margin-bottom: 1rem; /* Space below the subheading */
+    margin-left: 8rem;
+}
+
+/* Higher paragraph */
+.higherP {
+    font-size: 15px; /* Font size for higher paragraph */
+    line-height: 1.5; /* Line height for readability */
+    margin-bottom: 1rem;
+    margin-left: 10rem; /* Space to the left */
+    max-width: 800px;
+
+}
+
+/* Lower paragraph */
+.lowerP {
+    font-size: 12px; /* Font size for lower paragraph */
+    line-height: 1.5; /* Line height for readability */
+    margin-left: 10rem; /* Space to the left */
+}
+
+/* Hero image */
+.heroImage {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 600px; /* Max width for larger screens */
+    border-radius: 10px; /* Optional: Rounded corners */
+    margin-top: 1rem; /* Space above the image */
+    /*margin-left: 20rem; !* Space to the left *!*/
+}
+
+/* Responsive adjustments for medium screens (tablets, small desktops) */
+@media screen and (max-width: 1024px) {
+    .subHead {
+        font-size: 1.8rem; /* Reduce font size */
+    }
+
+    .higherP, .lowerP {
+        font-size: 1.1rem; /* Slightly reduce font size */
+    }
+}
+
+/* Responsive adjustments for mobile screens */
+@media screen and (max-width: 768px) {
+    .mainContain {
+        flex-direction: column; /* Change to column layout for mobile */
+        align-items: center; /* Center items */
+        padding: 1rem; /* Reduce padding for mobile */
+    }
+
+    .subHead {
+        font-size: 1.5rem; /* Further reduce font size */
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .higherP, .lowerP {
+        font-size: 1rem; /* Further reduce font size */
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .heroImage {
+        margin-left: 0; /* Remove left margin for the image */
+    }
+}

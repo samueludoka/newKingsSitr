@@ -1,68 +1,158 @@
-.maincontent{
+.maincontent {
     width: 100%;
     height: 100vh;
-    /*background-color: black;*/
-    background-image: url(images/pngtree-bitcoin-cryptocurrency-and-the-future-of-trading-portfolio-picture-image_2748042.jpg);
-    background-position: center;
+    background-position: right;
     background-size: cover;
-    padding: 0 7%;
+
+    /*padding-top: 5rem;*/
+    /*background-image: url(Images/Bg.png);*/
+    padding: 5%;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(images/Bg.png);
+}
+
+.coingeckowidget iframe {
+    border: none;
+}
+
+.slider {
+    height: 80px;
+    margin: auto;
+    position: relative;
+    width: 2020px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-color: #4D4D4D;
+    right: 100px;
 
 }
-.content{
+
+.slider_track {
+  display: flex;
+  width: calc(250px * 18);
+    animation: scroll 40s linear infinite;
+}
+
+.slide {
+    height: 90px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 50px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 9));
+    }
+
+}
+
+
+.innerContent {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+}
+
+.btc {
+    width: auto;
+    height: 30rem;
+    padding-top: 2rem;
+    padding-right: 5rem;
+}
+
+.content {
     padding-top: 5rem;
 }
-.content p{
-    font-family: sans-serif;
+
+.content h1 {
+    font-size: 85px;
+    /*margin-bottom: 15px;*/
+    font-family: Arial;
+    font-weight: bold;
+
 }
-.content h2{
-    font-size: 40px;
-    margin-bottom: 15px;
+.content p {
+    font-weight: bold;
+    font-size: 35px;
+
 }
-.piantGold{
+
+.piantGold {
     color: #ff960b;
     font-family: BlinkMacSystemFont;
 }
-.content h1 span{
+
+.content h1 span {
     color: #ff960b;
     font-family: "Candara";
 }
-.content h1{
-    font-size: 88px;
-    margin-bottom: 15px;
-    font-family: Arial;
-}
-.content h1 span{
-    color: #ff960b;
-    font-family: "Candara";
-}
-.content p{
+
+.content p {
     line-height: 22px;
+    font-family: sans-serif;
+}
+
+.content h3 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.authButton{
+    display: flex;
+    gap: 10px;
+}
+
+.signUp{
+    background-color: green; /* Green background */
+    color: white;              /* White text */
+    padding: 15px 30px;        /* Padding (top-bottom and left-right) */
+    font-size: 18px;           /* Font size */
+    border: 2px solid black;              /* Remove border */
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 
 }
-.content .btn{
-    display: inline-block;
-    margin-top: 30px;
-    background: #ff960b;
-    color:#fff;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 30px;
+.login{
+    background-color: white; /* Green background */
+    color: black;              /* White text */
+    padding: 15px 30px;        /* Padding (top-bottom and left-right) */
+    font-size: 18px;           /* Font size */
+    border: 2px solid black;              /* Remove border */
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+
 }
+
 /* BitcoinConversion.css */
 .bitcoinConversion {
     font-family: Arial, sans-serif;
-    font-size: 40px;
+    font-size: 32px;
     text-align: center;
     margin: 20px;
     color: #ff960b;
-    padding-top: 5rem;
+    padding-top: 1rem;
 }
 
 .rateDisplay {
     position: relative;
     overflow: hidden;
-    height: 50px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,4 +183,88 @@
 
 .rate-display div {
     animation: fadeSlide 1s ease-in-out;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .maincontent {
+        padding: 0 5%;
+    }
+
+    .btc {
+        height: 25rem;
+        padding-right: 3rem;
+    }
+
+    .content h1 {
+        font-size: 60px;
+    }
+
+    .content h2 {
+        font-size: 36px;
+    }
+
+    .bitcoinConversion {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .innerContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .btc {
+        height: 20rem;
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .content {
+        padding-top: 3rem;
+    }
+
+    .content h1 {
+        font-size: 48px;
+    }
+
+    .content h2 {
+        font-size: 32px;
+    }
+
+    .bitcoinConversion {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .maincontent {
+        padding: 0 2%;
+    }
+
+    .btc {
+        height: 15rem;
+    }
+
+    .content h1 {
+        font-size: 36px;
+    }
+
+    .content h2 {
+        font-size: 24px;
+    }
+
+    .content p {
+        line-height: 1.5rem;
+    }
+
+    .content .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .bitcoinConversion {
+        font-size: 18px;
+    }
 }

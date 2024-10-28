@@ -1,0 +1,176 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the left */
+    color: black; /* Gold text */
+    /*height: 100vh; !* Full viewport height *!*/
+    font-family: Arial, sans-serif;
+    width: 100%; /* Full width */
+    /*max-width: 800px; !* Limit max width *!*/
+    background-color: darkblue;
+    padding: 20px 300px;
+}
+
+.logoContainer {
+    align-items: center; /* Center elements horizontally */
+    text-align: center; /* Center text */
+    margin-bottom: 20px;
+    align-content: center;
+    display: block;
+}
+.logoContainer h1{
+    color: gold;
+}
+.logoContainer p{
+    color: gold;
+}
+
+.logo {
+    height: 50px; /* Adjust logo size */
+    /*align-content: center;*/
+    padding-left: 8rem;
+}
+
+.title {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.subTitle {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.balanceStatus {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+    gap: 3rem;
+}
+
+.balance,
+.paymentStatus {
+    flex: 1;
+    padding: 0px;
+    border: 1px solid gold; /* Gold border */
+    border-radius: 10px;
+    background-color: #658eaf; /* Light gold background */
+    text-align: center;
+}
+.balance,
+.paymentStatus h2{
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Arial;
+}
+
+.paymentSteps {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid gold; /* Gold border */
+    border-radius: 10px;
+    background-color: #658eaf; /* Light gold background */
+}
+.paymentSteps h1{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Arial;
+}
+
+.addressContainer {
+    display: flex;
+    flex-direction: column; /* Stack addresses vertically */
+    align-items: flex-start; /* Align to the left */
+    width: 100%;
+    margin: 20px 0;
+}
+
+.address {
+    padding: 10px; /* Reduced padding for smaller box */
+    border: 1px solid gold; /* Gold border */
+    border-radius: 5px; /* Smaller radius for smaller box */
+    background-color: #658eaf; /* Light gold background */
+    text-align: left; /* Left align text */
+    width: 100%; /* Full width */
+    margin-bottom: 10px; /* Space between address boxes */
+}
+.address h3{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.copyButton {
+    padding: 10px;
+    background-color: darkblue; /* Dark blue background */
+    color: gold; /* Gold text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.copyButton:hover {
+    background-color: rgba(59, 208, 67, 0.8); /* Hover effect */
+}
+
+.paymentDetails {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid gold; /* Gold border */
+    border-radius: 10px;
+    background-color: rgba(255, 215, 0, 0.1); /* Light gold background */
+}
+.paymentDetails h2{
+    font-family: Arial;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.note {
+    margin: 10px 0;
+    font-size: 14px;
+    color: gold; /* Darker text for notes */
+}
+
+.submitButton {
+    padding: 10px;
+    background-color: #ff960b; /* Submit button color */
+    border: none;
+    border-radius: 5px;
+    color: white; /* White text */
+    cursor: pointer;
+    display: block; /* Center button */
+    margin: 0 auto; /* Center button */
+}
+
+.submitButton:hover {
+    background-color: #e68a00; /* Hover effect */
+}
+
+.message {
+    margin-top: 15px;
+    color: green;
+    text-align: center; /* Center message */
+}

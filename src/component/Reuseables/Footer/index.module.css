@@ -1,10 +1,19 @@
 .mainCont{
     display: flex;
     flex-direction: row;
-    background-color: black;
+    background-color: #1f2f2d;
     /*padding-left: 5rem;*/
     /*gap: 12rem;*/
     justify-content: space-evenly;
+    cursor: pointer;
+    padding-top: 5rem;
+}
+.companyPara p:hover{
+    color: orangered;
+}
+
+.company h3{
+    padding-bottom: 2rem;
 }
 
 .firstDiv{
@@ -13,6 +22,16 @@
     gap: 0.3rem;
     padding-left: 0;
 }
+.logo {
+    height: 100%;
+    width: 100%;
+}
+
+.logo img {
+    height: 100px; /* Increase size here */
+    width: 100px;  /* Increase size here */
+}
+
 
 .firstDiv > h1{
     font-size: 27px;
@@ -33,6 +52,10 @@
 .socialIcon{
     display: flex;
     gap: 10px;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
 }
 
 .tire{
@@ -83,3 +106,4 @@ input::placeholder{
         flex-direction: column;
     }
 }
+

@@ -1,68 +1,199 @@
-.mainContent{
+/*.mainContent{*/
+/*    background-color: black;*/
+/*}*/
+
+/*.firstDiv h1{*/
+/*    font-size: xxx-large;*/
+/*    color: #ff960b;*/
+/*    text-align: center;*/
+/*}*/
+/*.firstDiv p{*/
+/*    color: #FFFFFF;*/
+/*    text-align: center;*/
+/*}*/
+/*.firstInnerDiv{*/
+/*    border-radius:60px;*/
+/*    border: 10px double #ff960b;*/
+/*    padding: 3rem;*/
+/*    background-color: #4D4D4D;*/
+/*}*/
+/*.firstInnerDiv h1{*/
+/*    font-size: xx-large;*/
+/*    padding-left: 7rem;*/
+/*    padding-bottom: 3rem;*/
+/*}*/
+/*.secondDiv{*/
+/*    display: flex;*/
+/*    color: #FFFFFF;*/
+/*    padding-left: 9rem;*/
+/*    padding-top: 3rem;*/
+/*    padding-bottom: 5rem;*/
+/*}*/
+/*.secondInnerDiv{*/
+/*    border-radius:60px;*/
+/*    border: 10px double #ff960b;*/
+/*    padding: 3rem;*/
+/*    background-color: #4D4D4D;*/
+/*}*/
+/*.secondInnerDiv h1{*/
+/*    font-size: xxx-large;*/
+/*   text-align: center;*/
+/*    padding-bottom: 2rem;*/
+/*}*/
+/*.secondInnerDiv p{*/
+/*    text-align: center;*/
+/*}*/
+
+
+/*.thirdInnerDiv{*/
+/*    border-radius:60px;*/
+/*    border: 10px double #ff960b;*/
+/*    padding: 3rem;*/
+/*    background-color: #4D4D4D;*/
+/*}*/
+/*.thirdInnerDiv h1{*/
+/*    font-size: xxx-large;*/
+/*    text-align: center;*/
+/*    padding-bottom: 2rem;*/
+/*}*/
+/*.thirdInnerDiv p{*/
+/*    text-align: center;*/
+/*}*/
+/*.arrows{*/
+/*    height: 70px;*/
+/*    width: auto;*/
+/*    margin-top: 12rem;*/
+
+/*}*/
+/*.img2{*/
+/*    padding-left: 2rem;*/
+/*}*/
+
+.mainContent {
     background-color: black;
+    padding: 1rem; /* Overall padding */
 }
 
-.firstDiv h1{
-    font-size: xxx-large;
+.firstDiv h1 {
     color: #ff960b;
     text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 65px;
 }
-.firstDiv p{
+
+.firstDiv p {
     color: #FFFFFF;
     text-align: center;
+    font-size: 25px;
+    font-family: Arial;
 }
-.firstInnerDiv{
-    border-radius:600px;
-    border: 10px double white;
-    padding: 3rem;
+.firstInnerDiv,
+.secondInnerDiv,
+.thirdInnerDiv {
+    border-radius: 60px;
+    padding: 2rem;
     background-color: #4D4D4D;
+    margin: 1rem;
+    box-sizing: content-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth zoom and shadow transitions */
 }
-.firstInnerDiv h1{
-    font-size: xx-large;
-    padding-left: 7rem;
-    padding-bottom: 3rem;
+
+/* On hover: apply zoom effect and highlight */
+.firstInnerDiv:hover,
+.secondInnerDiv:hover,
+.thirdInnerDiv:hover {
+    transform: scale(1.05); /* Zoom in effect */
+    /*box-shadow: 0 0 20px #ff960b; !* Highlight with orange glow *!*/
+    border: solid gold;
 }
-.secondDiv{
+
+/* Adjust heading styles */
+.firstInnerDiv h1,
+.secondInnerDiv h1,
+.thirdInnerDiv h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Flexbox for secondDiv */
+.secondDiv {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #FFFFFF;
-    padding-left: 7rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding: 2rem;
 }
-.secondInnerDiv{
-    border-radius:600px;
-    border: 10px double white;
-    padding: 3rem;
-    background-color: #4D4D4D;
+.images{
+    display: flex;
+    gap: 70px;
+    padding-top: 20px;
 }
-.secondInnerDiv h1{
-    font-size: xxx-large;
-   text-align: center;
-    padding-bottom: 2rem;
+.invest1{
+    height: 120px;
+    width: auto;
 }
-.secondInnerDiv p{
-    text-align: center;
+.invest2{
+    height: 120px;
+    width: auto;
 }
 
 
-.thirdInnerDiv{
-    border-radius:600px;
-    border: 10px double white;
-    padding: 5rem;
-    background-color: #4D4D4D;
-}
-.thirdInnerDiv h1{
-    font-size: xxx-large;
-    text-align: center;
-    padding-bottom: 2rem;
-}
-.thirdInnerDiv p{
-    text-align: center;
-}
-.arrows{
+.arrows {
     height: 70px;
     width: auto;
-    margin-top: 15rem;
-
+    margin: 1rem 0; /* Space above and below arrows */
 }
 
+/* Desktop layout */
+@media (min-width: 769px) {
+    .secondDiv {
+        flex-direction: row; /* Row layout on larger screens */
+        justify-content: center; /* Center items horizontally */
+    }
+
+    .arrows {
+        margin: 0 1rem; /* Add horizontal spacing around arrows */
+    }
+}
+
+/* Responsive Styles for Different Screen Sizes */
+@media (max-width: 768px) {
+    .firstDiv h1 {
+        font-size: 2rem; /* Smaller heading on tablets */
+    }
+
+    .firstInnerDiv,
+    .secondInnerDiv,
+    .thirdInnerDiv {
+        flex: 1 1 100%; /* Full width on smaller screens */
+        margin: 1rem 0; /* Space between items */
+    }
+
+    .arrows {
+        margin: 1rem 0; /* Adjust spacing for mobile */
+        transform: rotate(90deg); /* Rotate arrows for vertical alignment */
+    }
+}
+
+@media (max-width: 480px) {
+    .firstDiv h1 {
+        font-size: 1.5rem; /* Smaller heading on mobile */
+    }
+
+    .firstDiv p {
+        font-size: 0.9rem; /* Smaller paragraph text */
+    }
+
+    .firstInnerDiv h1,
+    .secondInnerDiv h1,
+    .thirdInnerDiv h1 {
+        font-size: 1.5rem; /* Adjusted heading size for mobile */
+    }
+
+    .secondInnerDiv p,
+    .thirdInnerDiv p {
+        font-size: 0.8rem; /* Adjusted paragraph size */
+    }
+}

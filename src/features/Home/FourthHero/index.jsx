@@ -36,36 +36,50 @@ const FourthHero = () =>{
         }
     };
     return(
-      <div className={styles.mainContent}>
-          <div className={styles.firstDiv}>
-              <h1>Benefits of using <br/><span>Nextcent</span></h1>
-              <h2>Nextcent offers a new level of trading and is able to offer market-leading pricing and trading conditions <br/>through the MT4 platform by providing clients with true ECN connectivity.</h2>
-                  <div className={styles.linedWords}>
-                  <p>1. <span>Fast Transactions: </span>Withdrawal takes less than 2 minutes.<br/>
-                      2. <span>Processing Fees: </span>You get everything for one low, transparent fee of 0.25% . <br/>
-                      3. <span>No Boundaries: </span>Xpertrades accept users from all over the world, no country restricted. <br/>
-                      4. <span>Customer Privacy: </span>There is no need to collect private information from our customers to accept payment if using bitcoin.
-                  </p>
-              </div>
-          </div>
+        <div className={styles.mainContent}>
+            <div className={styles.firstDiv}>
+                <h1>Benefits of using <br/><span>Nextcent</span></h1>
+                <h2>Nextcent offers a new level of trading and is able to offer market-leading pricing and trading
+                    conditions <br/>through the MT4 platform by providing clients with true ECN connectivity.</h2>
+                <div className={styles.linedWords}>
+                    <p>1. <span>Fast Transactions: </span>Withdrawal takes less than 2 minutes.<br/>
+                        2. <span>Processing Fees: </span>You get everything for one low, transparent fee of 0.25%
+                        . <br/>
+                        3. <span>No Boundaries: </span>Xpertrades accept users from all over the world, no country
+                        restricted. <br/>
+                        4. <span>Customer Privacy: </span>There is no need to collect private information from our
+                        customers to accept payment if using bitcoin.
+                    </p>
+                </div>
+            </div>
 
-          <div className={styles.calculator}>
-              <h1 className={styles.div1}>Bitcoin to USD Converter</h1>
-              <p className={styles.secDiv}>Current Bitcoin Price: ${btcPrice ? btcPrice.toLocaleString() : 'Loading...'}</p>
+            <div className={styles.videoCointainermMain}>
+                <iframe src="https://www.youtube.com/embed/wCo9OxYoi0s?si=5rhPU6pu48uH-FND"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen className={styles.videoCointainer}></iframe>
+            </div>
 
-              <input
-                  type="number"
-                  value={btcAmount}
-                  onChange={handleBtcAmountChange}
-                  placeholder="Enter amount in BTC"
-              />
-              <p className={styles.thirdDiv}>USD Value: {usdValue !== null ? `$${usdValue}` : 'Enter BTC amount'}</p>
-              <p className={styles.Div2}>Use the Bitcoin calculator to find out <br/>exactly how much your Bitcoin is worth in <br/>USD,by using accurate, up-to-date exchange rates.
+            {/*<div className={styles.calculator}>*/}
+            {/*    <h1 className={styles.div1}>Bitcoin to USD Converter</h1>*/}
+            {/*    <p className={styles.secDiv}>Current Bitcoin Price:*/}
+            {/*        ${btcPrice ? btcPrice.toLocaleString() : 'Loading...'}</p>*/}
 
-              </p>
-          </div>
-          );
-      </div>
+            {/*    <input*/}
+            {/*        type="number"*/}
+            {/*        value={btcAmount}*/}
+            {/*        onChange={handleBtcAmountChange}*/}
+            {/*        placeholder="Enter amount in BTC"*/}
+            {/*    />*/}
+            {/*    <p className={styles.thirdDiv}>USD Value: {usdValue !== null ? `$${usdValue}` : 'Enter BTC amount'}</p>*/}
+            {/*    <p className={styles.Div2}>Use the Bitcoin calculator to find out <br/>exactly how much your Bitcoin is*/}
+            {/*        worth in <br/>USD,by using accurate, up-to-date exchange rates.*/}
+
+            {/*    </p>*/}
+            {/*</div>*/}
+            );
+        </div>
     );
 }
 export default FourthHero;

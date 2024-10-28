@@ -1,0 +1,346 @@
+
+.navbar {
+    background: #ff960b;
+    width: 100%;
+    display: flex;                    /* Use flexbox for layout */
+    align-items: center;              /* Vertically center items */
+    max-height: calc(100vh - 100px); /* Adjust height as needed */
+    padding: 0 1rem;                  /* Add horizontal padding */
+    /*justify-content: space-between;    !* Space items between left and right *!*/
+    overflow-y: auto;              /* Enable scrolling if content exceeds height */
+}
+
+.logo {
+    height: 30px;                     /* Logo height */
+    width: auto;                      /* Maintain aspect ratio */
+}
+
+.user {
+    display: flex;                    /* Flex container for user area */
+}
+
+.contact {
+    height: 70px;                    /* Height of contact image */
+    width: auto;                     /* Maintain aspect ratio */
+    margin-left: auto;               /* Push contact image to the right end */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    position: fixed;           /* Fixed sidebar */
+    height: 100%;
+    overflow-y: auto;         /* Allow scrolling in the sidebar if needed */
+    border-right: none;
+}
+
+.sidebar h2 {
+    color: #333;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebarlist {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebaritem h3 {
+    color: #333;
+    font-size: 20px; /* Make Funds and Others bold and larger */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sublist {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sublist li {
+    margin-bottom: 20px; /* Increase spacing between each item */
+}
+
+.sublist a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Increase font size for links */
+    padding: 12px;
+    background-color: transparent;
+    border-radius: 0;
+    transition: background-color 0.3s;
+}
+
+.sublist a:hover {
+    background-color: orange; /* Change hover color to orange */
+}
+
+.sublist a i {
+    margin-right: 12px;
+    font-size: 20px; /* Increase icon size */
+}
+
+/* Add extra spacing between User Fund Logs and Others */
+.sidebaritem:nth-child(1) {
+    margin-bottom: 40px; /* Extra space between the two sections */
+}
+
+
+
+
+/* Main content */
+.maincontent {
+    margin-left: 250px; /* Match sidebar width */
+    padding: 20px;
+    flex-grow: 1;
+    position: relative;
+}
+
+.maincontent h1 {
+    font-size: 15px;
+    color: white;
+}
+
+.maincontent p {
+    font-size: 18px;
+    color: #666;
+}
+.fasfamoneybill{
+    height: 2em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+}
+.depositText{
+    font-size: 12px;
+}
+.fasfacreditcard{
+    height: 2.5em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+.withdrawText{
+    font-size: 12px;
+}
+.fasfachartline{
+    height: 2em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+.fasfalistalt{
+    height: 2em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+.investText{
+    font-size: 12px;
+}
+.fasfasignal{
+    height: 4em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+}
+.userFundText{
+    font-size: 12px ;
+}
+.fasfausershield{
+    height: 3em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+.purchaseText{
+    font-size: 12px;
+}
+.fasfaclipboardlist{
+    height: 3em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+.upgradeText{
+    font-size: 12px;
+}
+.fasfacheckcircle{
+    height: 3em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+.planText{
+    font-size: 12px;
+}
+.fasfahome{
+    height: 2em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+}
+.HomeText{
+    font-size: 12px;
+}
+.verifyText{
+    font-size: 12px;
+}
+.fasfasignoutalt{
+    height: 2em;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 10px;
+}
+.logText{
+    font-size: 12px;
+}
+
+.maincontent {
+    margin-left: 250px;        /* Leave space for the sidebar */
+    padding: 20px;
+    overflow-y: auto;          /* Enable vertical scrolling */
+    max-height: calc(100vh - 100px); /* Adjust height to leave space for navbar */
+    flex-grow: 1;              /* Allow it to take the available space */
+}
+.AccountBalance {
+    display: flex;                    /* Use flexbox for layout */
+    justify-content: space-between;   /* Space elements evenly */
+    padding: 20px;                   /* Add padding around the container */
+}
+
+.depositBalance {
+    border: 2px solid blue;          /* Blue border */
+    background-color: rgba(173, 216, 230, 0.3); /* Light blue background */
+    border-radius: 10px;             /* Rounded corners */
+    padding: 10px;                   /* Padding inside the box */
+    text-align: center;               /* Center the text */
+    flex: 1;                         /* Make it flexible */
+    margin: 0 10px;                  /* Add margin between boxes */
+}
+
+.profits {
+    border: 2px solid green;         /* Green border */
+    background-color: rgba(144, 238, 144, 0.3); /* Light green background */
+    border-radius: 10px;             /* Rounded corners */
+    padding: 10px;                   /* Padding inside the box */
+    text-align: center;               /* Center the text */
+    flex: 1;                         /* Make it flexible */
+    margin: 0 10px;                  /* Add margin between boxes */
+}
+
+.withdraw {
+    border: 2px solid red;           /* Red border */
+    background-color: rgba(255, 99, 71, 0.3); /* Light red background */
+    border-radius: 10px;             /* Rounded corners */
+    padding: 10px;                   /* Padding inside the box */
+    text-align: center;               /* Center the text */
+    flex: 1;                         /* Make it flexible */
+    margin: 0 10px;                  /* Add margin between boxes */
+}
+
+
+
+.flexContainer {
+    display: flex; /* Align the child elements side by side */
+    justify-content: space-between; /* Create space between the chartContainer and referral container */
+    gap: 20px; /* Add some gap between the elements */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.chartContainer {
+    flex: 1; /* Allow the chartContainer to take available space */
+    padding: 20px;
+    background-color: #f0f8ff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 700px;
+}
+
+.container {
+    flex-basis: 30%; /* Set a fixed width for the referral container */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+}
+.background{
+    width: 1100px;
+    height: 400px;
+    padding-bottom: 2rem;
+}
+.container h1{
+    font-size: 30px;
+    color: black;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.linkContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.referralLink {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    margin-right: 10px;
+}
+.referralEx {
+    background-color: rgba(240, 248, 255, 0.7);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.referralEx h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.referralEx p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.copyButton {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.copyMessage {
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+}
+
+

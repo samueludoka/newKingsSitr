@@ -1,11 +1,6 @@
-import logo from "../../../assets/header/Icon.png"
+import logo from "./images/logo-no-background.png"
 import style from "./index.module.css"
-import instagram from "../../../assets/footer/instagram.png"
-import tire from "../../../assets/footer/tire.png"
-import twitter from "../../../assets/footer/twitter.png"
-import youtube from "../../../assets/footer/youtube.png"
-import send from "../../../assets/footer/send.png";
-import message from "./images/img.png"
+
 const Footer = ()=>{
     const date = new Date().getFullYear()
 
@@ -14,17 +9,17 @@ const Footer = ()=>{
 
             <div className={style.mainDiv}>
                 <div className={style.firstDiv}>
-                    <img src={logo} alt={""}/>
-                    <h1>Nexcent</h1>
+                    {/*<img src={logo} alt={""} className={style.logo}/>*/}
+                    <h1>Nexcents</h1>
                 </div>
                 <p>Copyright © {date} Nexcent ltd.</p>
                 <p>All rights reserved</p>
 
                 <div className={style.socialIcon}>
-                    <img src={instagram} alt={"instagram logo"}/>
-                    <img src={tire} alt={""} className={style.tire}/>
-                    <img src={twitter} alt={""}/>
-                    <img src={youtube} alt={""} className={style.youtube}/>
+                    <p>Sound Management Practices; Competent &
+                        <br/>Credible Traders; User Friendly Policies,
+                        <br/>Procedures and Systems;Proactive Service <br/>
+                        Philosophy and Strategy; Multiple Support Channels;</p>
                 </div>
             </div>
 
@@ -32,29 +27,27 @@ const Footer = ()=>{
             <div className={style.company}>
                 <h3>Company</h3>
                 <div className={style.companyPara}>
-                    <p>About us</p>
-                    <p>Blog</p>
-                    <p>Contact us</p>
-                    <p>Pricing</p>
-                    <p>Testimonials</p>
+                    <p> >> Home</p>
+                    <p> >> Service</p>
+                    <p> >> Buy Crypto</p>
+                    <p> >> About</p>
+                    <p> >> Product</p>
+                    <p> >> FAQ</p>
                 </div>
             </div>
 
             <div className={style.company}>
-                <h3>Support</h3>
+                <h3>Register</h3>
                 <div className={style.companyPara}>
-                    <p>Help center</p>
-                    <p>Terms of service</p>
-                    <p>Legal</p>
-                    <p>Privacy policy</p>
-                    <p>Status</p>
+                    <p> >> sign up</p>
+                    <p> >> login</p>
+                    <p> >> account</p>
                 </div>
             </div>
 
             <div className={style.company}>
-                <h3>Stay up to date</h3>
-                <input type={"text"} placeholder={"Your email address..."}/>
-                <img src={send} alt={""} className={style.send}/>
+                <h3>Contact</h3>
+                <p>support@nextcents.com</p>
             </div>
 
 

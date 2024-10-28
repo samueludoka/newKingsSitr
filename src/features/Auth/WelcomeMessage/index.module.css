@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f3f4f6; /* Light gray background */
+}
+
+.card {
+    background-color: white; /* White background for the card */
+    padding: 24px; /* Padding inside the card */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Centered text */
+    width: 100%; /* Full width */
+    max-width: 400px; /* Max width for larger screens */
+}
+
+.title {
+    font-size: 1.5rem; /* Font size for the title */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 1rem; /* Margin below the title */
+    color: #4a5568; /* Dark gray color */
+}
+
+.message {
+    font-size: 1rem; /* Font size for the message */
+    margin-bottom: 1.5rem; /* Margin below the message */
+    color: #4a5568; /* Dark gray color */
+}
+
+.homeButton {
+    padding: 10px 20px; /* Padding inside button */
+    background-color: #3182ce; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth background color transition */
+}
+
+.homeButton:hover {
+    background-color: #2b6cb0; /* Darker blue on hover */
+}

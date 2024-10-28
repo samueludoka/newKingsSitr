@@ -1,0 +1,73 @@
+.mainContent {
+    background-color: #a3d8ef;
+}
+.background{
+    width: 1400px;
+    height: 400px;
+}
+
+.content {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.content:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Question text */
+.content p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.excerptWidget {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    padding: 10px 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+section[aria-hidden="false"] .excerptWidget {
+    display: block;
+    opacity: 1;
+}
+
+section {
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.excerptWidget span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.excerptWidget br {
+    margin-bottom: 10px;
+}

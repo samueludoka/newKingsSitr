@@ -1,9 +1,19 @@
 import styles from "./index.module.css";
 
-const FilledButton = ({color, text, textColor, padding, border}) =>{
+const FilledButton = ({color, text, textColor, padding, border, onClick}) =>{
     return(
         <div>
-            <button style={{background: color, color:textColor, padding: padding, borderRadius: border}} className={styles.filledButton}>
+            <button
+                onClick={onClick}
+                style={{
+                    background: color,
+                    color: textColor,
+                    padding: padding,
+                    borderRadius: '8px',
+                    border: `${border} solid ${color}`,
+                }}
+                className={styles.filledButton}
+            >
                 {text}
             </button>
         </div>

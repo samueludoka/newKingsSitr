@@ -1,29 +1,113 @@
-.mainContent{
+/*.mainContent{*/
+/*    color: #FFFFFF;*/
+/*    background-color: black;*/
+/*    font-size: x-large;*/
+/*    padding-left: 5rem;*/
+/*    padding-top: 5rem;*/
+/*    padding-bottom: 5rem;*/
+
+/*}*/
+/*.mainContent h1{*/
+/*    padding-bottom: 2rem;*/
+/*    padding-left: 2rem;*/
+/*}*/
+/*.input1{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 2rem;*/
+/*    align-content: space-evenly;*/
+
+/*}*/
+/*.inputs {*/
+/*    border: 10px double white;*/
+/*    padding: 1rem;*/
+/*    border-radius: 20px;*/
+/*    width: 40rem;*/
+/*}*/
+/*.inputs input{*/
+/*    padding: 1rem;*/
+/*}*/
+/*.message{*/
+/*    width: auto;*/
+/*    height: 10rem;*/
+/*    margin-top: 2px;*/
+/*}*/
+/*.humanReg{*/
+/*    display: flex;*/
+/*    padding-left: 7rem;*/
+/*}*/
+/*.human{*/
+/*    width: auto;*/
+/*    height: 30rem;*/
+/*    padding-left: 16rem;*/
+/*}*/
+
+.mainContent {
     color: #FFFFFF;
     background-color: black;
-    font-size: x-large;
-    padding-left: 5rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-
+    font-size: 1.5rem; /* Adjust font size for readability */
+    padding: 5rem 2rem; /* Padding adjusted for smaller screens */
+    text-align: center; /* Center text */
 }
-.input1{
+
+.mainContent h1 {
+    padding-bottom: 2rem;
+}
+
+.input1 {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    align-content: space-evenly;
-
+    gap: 1.5rem; /* Adjust gap for smaller screens */
+    align-items: center; /* Center align inputs */
 }
+
 .inputs {
     border: 10px double white;
     padding: 1rem;
     border-radius: 20px;
-    width: 40rem;
+    max-width: 500px; /* Limit maximum width for responsiveness */
+    width: 100%; /* Full width on small screens */
+    margin: 0 auto; /* Center the form */
 }
-.inputs input{
+
+.inputs input,
+.inputs textarea {
     padding: 1rem;
+    width: 100%; /* Full width */
 }
-.message{
-    width: auto;
+
+.message {
     height: 10rem;
+    margin-top: 2px;
+}
+
+.humanReg {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center; /* Center the image and inputs */
+    margin-top: 2rem; /* Space above the section */
+}
+
+.human {
+    width: auto;
+    height: 30rem;
+    margin-top: 2rem; /* Space below the inputs */
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .humanReg {
+        flex-direction: row; /* Align items horizontally on larger screens */
+        justify-content: space-between; /* Space out items */
+        padding-left: 7rem; /* Maintain padding on larger screens */
+    }
+
+    .inputs {
+        width: 40rem; /* Fixed width on larger screens */
+    }
+
+    .human {
+        height: 30rem; /* Keep height consistent */
+        margin-left: 2rem; /* Space between inputs and image */
+    }
 }

@@ -1,0 +1,85 @@
+.mainContent{
+    background: mediumblue;
+    color: #FFFFFF;
+    padding: 5%;
+}
+.firstWord{
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.img1{
+    height: 120px;
+    width: auto;
+}
+.img2{
+    height: 120px;
+    width: auto;
+}
+.img3{
+    height: 120px;
+    width: auto;
+}
+.img4{
+    height: 120px;
+    width: auto;
+}
+.innerDiv{
+    display: flex;
+    gap: 13rem;
+}
+.innerDiv p{
+   font-size: 12px;
+    font-family: Arial;
+    font-weight: bold;
+}
+@media screen and (max-width: 1024px) {
+    .innerDiv {
+        padding-left: 2rem; /* Reduce left padding */
+        gap: 10rem; /* Reduce gap between items */
+    }
+
+    .fname {
+        font-size: 1.5rem; /* Reduce font size for names */
+    }
+
+    .title {
+        font-size: 1.2rem; /* Reduce font size for titles */
+    }
+
+    .firstWord {
+        font-size: 2.5rem; /* Reduce font size for first words */
+    }
+}
+
+/* Responsive adjustments for mobile screens */
+@media screen and (max-width: 768px) {
+    .innerDiv {
+        flex-direction: row; /* Change to row for mobile screens */
+        flex-wrap: wrap; /* Allow items to wrap onto the next line */
+        justify-content: center; /* Center items horizontally */
+        padding-left: 1rem; /* Further reduce left padding */
+        gap: 2rem; /* Adjust gap for smaller screens */
+    }
+
+    /* Each item should take up 45% of the width for two items per line */
+    .fname, .title, .firstWord {
+        width: 45%; /* Adjust width to fit two items per line */
+        text-align: center; /* Center text alignment */
+    }
+
+    .fname {
+        font-size: 1.2rem; /* Further reduce font size for names */
+    }
+
+    .title {
+        font-size: 1rem; /* Further reduce font size for titles */
+    }
+
+    .firstWord {
+        font-size: 2rem; /* Further reduce font size for first words */
+        padding-top: 1rem; /* Adjust padding for smaller screens */
+    }
+}

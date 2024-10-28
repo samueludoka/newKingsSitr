@@ -1,0 +1,124 @@
+/* Container for the entire page */
+.withdrawContainer {
+    background-color: #001f3f; /* Blue background */
+    color: gold; /* Gold text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 5%;
+    text-align: center;
+}
+
+/* Header with logo and titles */
+.header {
+    margin-bottom: 40px;
+}
+
+.logo {
+    max-width: 120px; /* Adjust logo size */
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-top: 5px;
+}
+.balanceStatus {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 20px 0;
+    gap: 2rem;
+}
+
+.balance,
+.paymentStatus {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid gold; /* Gold border */
+    border-radius: 10px;
+    background-color: rgba(12, 12, 10, 0.1); /* Light gold background */
+    text-align: center;
+
+}
+.paymentStatus h2{
+    color: white;
+}
+.balance h2{
+    color: white;
+
+}
+
+/* Payment Steps */
+.paymentSteps {
+    margin-bottom: 30px;
+    text-align: left;
+    color: gold;
+    font-size: 16px;
+}
+
+.paymentSteps h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: gold;
+}
+
+/* Input group styling */
+.inputGroup, .paymentDetails {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid gold;
+    border-radius: 5px;
+    background-color: #001c39;
+    color: white;
+    font-size: 16px;
+
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Submit button */
+.submitButton {
+    background-color: gold;
+    color: #001f3f;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+    background-color: #ffd700; /* Lighter gold on hover */
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .inputGroup, .paymentDetails {
+        width: 90%;
+    }
+}
