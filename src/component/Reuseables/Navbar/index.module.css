@@ -1,145 +1,360 @@
-/* Main container for the navbar */
-/* Main container for the navbar */
 .mainCont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 14, 39, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mainCont.scrolled {
+    background: rgba(10, 14, 39, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navWrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 32px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
-    color: black;
-    position: fixed;  /* Change to fixed to stick it to the top */
-    top: 0;           /* Stick to the top of the page */
-    width: 100%;      /* Make sure it spans the entire width */
-    z-index: 999;     /* Ensure it stays on top of other elements */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for visibility */
+    gap: 32px;
 }
 
-.mainButton{
-
-    background-color: white; /* Green background */
-    color: black;              /* White text */
-    padding: 15px 30px;        /* Padding (top-bottom and left-right) */
-    font-size: 21px;           /* Font size */
-    border: 2px solid black;              /* Remove border */
-    width: 200px;
-    height: 60px;
-    border-radius: 8px;        /* Rounded corners */
-    cursor: pointer;           /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-
-
-    /* Hover effect */
-    .styled-button:hover {
-        background-color: #45a049; /* Darker green on hover */
-        transform: scale(1.05);    /* Slightly enlarge the button */
-    }
-
-    /* Active state */
-    .styled-button:active {
-        background-color: #3e8e41; /* Even darker green on click */
-        transform: scale(0.98);    /* Slightly shrink on click */
-    }
-
-}
-
-/* Logo and title section */
+/* Logo Section */
 .imageSect {
-    display: flex;
-    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.imageSect:hover {
+    transform: scale(1.05);
 }
 
 .imageSect img {
     height: 40px;
-    margin-right: 10px;
-}
-
-.imageSect h1 {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Navigation links for desktop view */
-.linkCont {
-    display: flex;
-    gap: 30px;
-}
-
-.linkCont p {
-    cursor: pointer;
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
-
-.linkCont p:hover {
-    color: #4CAF50;
-}
-
-/* Button section */
-.buttonSect {
+    width: auto;
     display: block;
 }
 
-/* Mobile menu icon (hidden by default on large screens) */
-.menu {
+/* Desktop Navigation Links */
+.linkCont {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex: 1;
+    justify-content: center;
+}
+
+.navLink {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 8px 0;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+    transition: width 0.3s ease;
+}
+
+.navLink:hover {
+    color: #ffd700;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+/* Desktop Button */
+.buttonSect {
+    flex-shrink: 0;
+}
+
+.mainButton {
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #0a0e27;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.mainButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.mainButton:active {
+    transform: translateY(0);
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
     display: none;
 }
 
-/* Mobile-specific styles */
-@media screen and (max-width: 768px) {
-    /* Hide desktop navigation links */
+.menuButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.menuButton:hover {
+    transform: scale(1.1);
+}
+
+.menuIcon {
+    font-size: 28px;
+    color: #fff;
+}
+
+/* Mobile Menu Overlay */
+.menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 14, 39, 0.95);
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+    display: none;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    width: 100%;       
+    max-width: 100%;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+    display: none;
+   
+}
+
+.menuChange{
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+}
+
+.mobileMenuHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileMenuLogo img {
+    height: 32px;
+    width: auto;
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.closeButton:hover {
+    transform: rotate(90deg);
+}
+
+.closeIcon {
+    font-size: 28px;
+    color: #fff;
+}
+
+.mobileMenuLinks {
+    flex: 1;
+    padding: 24px 0;
+    overflow-y: auto;
+}
+
+.mobileNavLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    color: white;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.mobileNavLink:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-left-color: #ffd700;
+    color: #ffd700;
+}
+
+.mobileNavLink svg {
+    transition: transform 0.3s ease;
+}
+
+.mobileNavLink:hover svg {
+    transform: translateX(4px);
+}
+
+.mobileMenuFooter {
+    padding: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileGetStarted {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #0a0e27;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.mobileGetStarted:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+    .navWrapper {
+        padding: 16px 24px;
+    }
+
+    .linkCont {
+        gap: 24px;
+    }
+
+    .navLink {
+        font-size: 14px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .navWrapper {
+        padding: 14px 20px;
+    }
+
+    .imageSect img {
+        height: 32px;
+    }
+
     .linkCont {
         display: none;
     }
 
-    /* Show mobile menu icon */
-    .menu {
+    .buttonSect {
+        display: none;
+    }
+
+    .menuToggle {
         display: block;
-        position: relative;
-        z-index: 1000;
     }
 
-    .menuIcon {
-        font-size: 30px;
-        cursor: pointer;
+    .mobileMenu {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+       
+    }
+}
+
+@media (max-width: 480px) {
+    .navWrapper {
+        padding: 12px 16px;
     }
 
-    /* Dropdown mobile menu */
-    .insideMenu {
-        position: absolute;
-        top: 50px;
-        right: 0;
-        background-color: #333;
-        border-radius: 5px;
+    .imageSect img {
+        height: 28px;
+    }
+
+    .mobileMenuHeader {
+        padding: 16px 20px;
+    }
+
+    .mobileMenuLinks {
+        padding: 16px 0;
+    }
+
+    .mobileNavLink {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .mobileMenuFooter {
         padding: 20px;
-        width: 200px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .insideMenu p {
-        font-size: 18px;
-        margin-bottom: 15px;
-        cursor: pointer;
-        color: white;
-        transition: color 0.3s ease;
-    }
-
-    .insideMenu p:hover {
-        color: #4CAF50;
     }
 }
 
-/* Styling for screens larger than 768px (desktop view) */
-@media screen and (min-width: 769px) {
-    /* Ensure menu links are displayed in a row */
-    .mainCont {
-        flex-direction: row;
-    }
-
-    .linkCont {
-        display: flex;
-    }
-
-    .menu {
-        display: none; /* Hide mobile menu icon */
-    }
-}

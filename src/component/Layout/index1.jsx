@@ -5,7 +5,7 @@ import Home1 from "../../features/Home1";
 const Layout = () =>{
     return (
         <>
-            <Navbar/>
+          <Navbar/>
             <Home1/>
             {/*<Footer/>*/}
         </>

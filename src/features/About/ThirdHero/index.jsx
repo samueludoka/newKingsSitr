@@ -3,38 +3,30 @@ import img1 from "./image/img.png";
 import img2 from "./image/img_1.png";
 import img3 from "./image/img_2.png";
 import img4 from "./image/img_3.png";
-const ThirdHero = () =>{
-    return(
-        <div className={styles.mainContent}>
-            <div className={styles.firstWord}>
-                <h1>Team</h1>
-            </div>
-            <div className={styles.innerDiv}>
-                <div className={styles.firstProf}>
-                    <img src={img1} alt={""} className={styles.img1}/>
-                    <p className={styles.fname}>Marcel Niederberger</p>
-                    <p className={styles.title}>Chief Executive Officer</p>
-                </div>
 
-                <div className={styles.secondProf}>
-                    <img src={img2} alt={""} className={styles.img2}/>
-                    <p className={styles.fname}>Olga Vöegli</p>
-                    <p className={styles.title}>Chief Financial Officer</p>
-                </div>
+const ThirdHero = () => {
+  const team = [
+    { img: img1, name: "Marcel Niederberger", title: "Chief Executive Officer" },
+    { img: img2, name: "Olga Vöegli", title: "Chief Financial Officer" },
+    { img: img3, name: "Janina Vinklere", title: "Head of Marketing" },
+    { img: img4, name: "Alexander Graf", title: "Head of Distribution" }
+  ];
 
-                <div className={styles.thirdProf}>
-                    <img src={img3} alt={""} className={styles.img3}/>
-                    <p className={styles.fname}>Janina Vinklere</p>
-                    <p className={styles.title}>Head of Marketing</p>
-                </div>
+  return (
+    <div className={styles.mainContent}>
+      <h1 className={styles.firstWord}>Team</h1>
 
-                <div className={styles.forthProf}>
-                    <img src={img4} alt={""} className={styles.img4}/>
-                    <p className={styles.fname}>Alexander Graf</p>
-                    <p className={styles.title}>Head of Distribution</p>
-                </div>
-            </div>
-        </div>
-    );
-}
+      <div className={styles.grid}>
+        {team.map((member, i) => (
+          <div key={i} className={styles.card}>
+            <img src={member.img} alt={member.name} className={styles.avatar} />
+            <p className={styles.fname}>{member.name}</p>
+            <p className={styles.title}>{member.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default ThirdHero;

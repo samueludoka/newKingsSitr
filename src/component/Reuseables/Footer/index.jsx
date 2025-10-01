@@ -1,58 +1,61 @@
-import logo from "./images/logo-no-background.png"
-import style from "./index.module.css"
+import logo from "./images/logo-no-background.png";
+import style from "./index.module.css";
 
-const Footer = ()=>{
-    const date = new Date().getFullYear()
+const Footer = () => {
+  const date = new Date().getFullYear();
 
-    return(
-        <div className={style.mainCont}>
-
-            <div className={style.mainDiv}>
-                <div className={style.firstDiv}>
-                    {/*<img src={logo} alt={""} className={style.logo}/>*/}
-                    <h1>Nexcents</h1>
-                </div>
-                <p>Copyright © {date} Nexcent ltd.</p>
-                <p>All rights reserved</p>
-
-                <div className={style.socialIcon}>
-                    <p>Sound Management Practices; Competent &
-                        <br/>Credible Traders; User Friendly Policies,
-                        <br/>Procedures and Systems;Proactive Service <br/>
-                        Philosophy and Strategy; Multiple Support Channels;</p>
-                </div>
-            </div>
-
-
-            <div className={style.company}>
-                <h3>Company</h3>
-                <div className={style.companyPara}>
-                    <p> >> Home</p>
-                    <p> >> Service</p>
-                    <p> >> Buy Crypto</p>
-                    <p> >> About</p>
-                    <p> >> Product</p>
-                    <p> >> FAQ</p>
-                </div>
-            </div>
-
-            <div className={style.company}>
-                <h3>Register</h3>
-                <div className={style.companyPara}>
-                    <p> >> sign up</p>
-                    <p> >> login</p>
-                    <p> >> account</p>
-                </div>
-            </div>
-
-            <div className={style.company}>
-                <h3>Contact</h3>
-                <p>support@nextcents.com</p>
-            </div>
-
-
+  return (
+    <footer className={style.footer}>
+      <div className={style.container}>
+        
+        {/* Brand / About */}
+        <div className={style.brand}>
+          <div className={style.logoRow}>
+            <img src={logo} alt="Nexcent Logo" className={style.logo} />
+            <h1 className={style.brandName}>Nexcent</h1>
+          </div>
+          <p className={style.copy}>
+            Copyright © {date} Nexcent Ltd. <br /> All rights reserved.
+          </p>
+          <p className={style.motto}>
+            Sound Management Practices; Competent & Credible Traders; <br />
+            User Friendly Policies, Procedures and Systems; <br />
+            Proactive Service Philosophy and Strategy; <br />
+            Multiple Support Channels.
+          </p>
         </div>
-    )
-}
+
+        {/* Company Links */}
+        <div className={style.column}>
+          <h3>Company</h3>
+          <ul>
+            <li>Home</li>
+            <li>Service</li>
+            <li>Buy Crypto</li>
+            <li>About</li>
+            <li>Product</li>
+            <li>FAQ</li>
+          </ul>
+        </div>
+
+        {/* Register Links */}
+        <div className={style.column}>
+          <h3>Register</h3>
+          <ul>
+            <li>Sign Up</li>
+            <li>Login</li>
+            <li>Account</li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className={style.column}>
+          <h3>Contact</h3>
+          <p className={style.contact}>support@nextcents.com</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

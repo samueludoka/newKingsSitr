@@ -1,45 +1,63 @@
 .maincontain {
-    /*background-size: cover;*/
-    padding-top: 5%;
-    /*background-color: black;*/
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    background-image: url(images/img_3.png);
-    background-size: 1350px 800px;
-    background-repeat: no-repeat;
-}
-
-.coingeckowidget iframe {
-    border: none;
-}
-
-.slider {
-    height: 100px;
-    margin: auto;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b3d 100%);
     position: relative;
-    width: 1348px;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background-color: #4D4D4D;
-    /*right: 10px;*/
+    overflow: hidden;  min-height: calc(100vh - 40px);
+    padding-top: 80px; 
+}
 
+.maincontain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Ticker Slider */
+.slider {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 8px 0; 
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    height: 40px;
 }
 
 .slider_track {
     display: flex;
-    width: calc(250px * 18);
-    animation: scroll 40s linear infinite;
+    animation: scroll 30s linear infinite;
+    width: max-content;
+    height: 100%; 
+    align-items: center; 
 }
 
 .slide {
-    height: 150px;
-    width: 150px;
     display: flex;
     align-items: center;
-    padding: 15px;
-    perspective: 50px;
+    justify-content: center;
+    padding: 4px 16px; 
+    color: #fff;
+    font-size: 12px; 
+    font-weight: 500;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%; 
+}
+
+.slide img {
+    border-radius: 50%;
+    width: 24px; 
+    height: 24px;
 }
 
 @keyframes scroll {
@@ -47,214 +65,437 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-250px * 9));
+        transform: translateX(-50%);
     }
-
 }
 
-
-.innerContents {
+/* Main Content Area */
+.major {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 64px);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding-left: 50px;
-    position: relative;
-    bottom: 40px;
-    left: 40px;
-    /*background-image: url(images/Bg.png);*/
-    /*width: 100%;*/
-
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-/*.btc {*/
-/*    width: auto;*/
-/*    height: 30rem;*/
-/*    padding-top: 2rem;*/
-/*    padding-right: 5rem;*/
-/*}*/
-
-.content {
-    padding-top: 5rem;
-}
-
-.content h1 {
-    font-size: 55px;
-    /*margin-bottom: 15px;*/
-    font-family: Arial;
-    font-weight: bold;
-
-}
-.content p {
-    font-weight: bold;
-    font-size: 15px;
-
-}
-
-.piantGold {
-    color: #ff960b;
-    font-family: BlinkMacSystemFont;
-}
-
-.content h1 span {
-    color: #ff960b;
-    font-family: "Candara";
-}
-
-.content h3 {
-    font-size: 20px;
-
-}
-.authButton{
-    padding-top: 5rem;
-    display: flex;
-    gap: 10px;
-}
-
-.signUp{
-    background-color: green; /* Green background */
-    color: white;              /* White text */
-    padding: 15px 30px;        /* Padding (top-bottom and left-right) */
-    font-size: 12px;           /* Font size */
-    /*border: 2px solid black;              !* Remove border *!*/
-    width: 120px;
-    height: 50px;
-    border-radius: 8px;        /* Rounded corners */
-    cursor: pointer;           /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-
-}
-.signUp:hover {
-    background-color: orange;   /* Change background to orange on hover */
-    transform: scale(1.05);     /* Slight zoom effect */
-}
-.login{
-    background-color: white; /* Green background */
-    color: black;              /* White text */
-    padding: 15px 30px;        /* Padding (top-bottom and left-right) */
-    font-size: 12px;           /* Font size */
-    /*border: 2px solid black;              !* Remove border *!*/
-    width: 120px;
-    height: 50px;
-    border-radius: 8px;        /* Rounded corners */
-    cursor: pointer;           /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-}
-.login:hover {
-    background-color: orange;   /* Change background to orange on hover */
-    transform: scale(1.05);     /* Slight zoom effect */
-}
-
-/* BitcoinConversion.css */
-.bitcoinConversion {
-    font-family: Arial, sans-serif;
-    font-size: 32px;
-    text-align: center;
-    margin: 20px;
-    color: #ff960b;
-    padding-top: 0.1rem;
-}
-
-.rateDisplay {
-    position: relative;
-    overflow: hidden;
+/* Navigation Arrows */
+.navArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: #fff;
 }
 
-.rateDisplay::after {
-    content: "";
+.navArrow:hover {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.navArrowLeft {
+    left: 20px;
+}
+
+.navArrowRight {
+    right: 20px;
+}
+
+/* Slide Indicators */
+.slideIndicators {
     position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.indicatorActive {
+    background: gold;
+    width: 32px;
+    border-radius: 6px;
+}
+
+/* First Slide Content */
+.innerContents {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+    padding: 0 20px;
+
+}
+
+.content {
+    margin-bottom: 40px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50px;
+    color: gold;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+.content h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+.highlight {
+    color: #fff;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.piantGold {
+    color: gold;
+    position: relative;
+    display: inline-block;
+}
+
+.piantGold::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, gold, transparent);
+}
+
+.content h3 {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.authButton {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.signUp,
+.login {
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.signUp {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #0a0e27;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+.signUp::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    top: 100%;
-    left: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-    pointer-events: none;
-    transition: top 1s;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
 }
-.content2{
-    background-image: url(images/img.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.signUp:hover::before {
+    left: 100%;
+}
+
+.signUp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
+}
+
+.login {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.login:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Second Slide Content */
+.content2 {
+    max-width: 1200px;
     width: 100%;
-    padding: 5%;
-    background-position: center center;
-    /*background-size: 100% auto; !* Width will fill the container, height adjusts proportionally *!*/
-    height: calc(100vw * 4 / 10); /* Adjusts height to maintain a 16:9 ratio */
-
-
-}
-.content2 h1{
-    font-family: Arial;
-    font-size: 45px;
-    font-weight: bold;
-    color: #ff960b;
+    display: flex;
     align-items: center;
-    align-content: center;
-    /*padding: 5%;*/
+    justify-content: center;
+    animation: fadeIn 0.6s ease;
+    padding: 0 20px;
 }
-.content p{
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
-}
+
 
 .cont {
-    position: relative;
-    top: 60px;
-    /*padding: 30px;*/
+    text-align: center;
+    max-width: 700px;
 }
+
+.cont h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 24px 0;
+    line-height: 1.2;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    margin-bottom: 32px;
+}
+
+.bitcoinConversion {
+    margin: 40px 0;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 16px;
+    display: inline-block;
+}
+
+.rateDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+.btcLabel {
+    color: #ffd700;
+}
+
+.equals {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.rateValue {
+    color: #fff;
+}
+
+.currency {
+    color: #ffd700;
+    font-size: 0.8em;
+}
+
 .mainButton {
-    background-color: white;    /* Initial background color */
-    color: black;               /* Text color */
-    padding: 15px 30px;         /* Padding */
-    font-size: 21px;            /* Font size */
-    border: 2px solid black;    /* Border */
-    width: 200px;
-    height: 60px;
-    border-radius: 8px;         /* Rounded corners */
-    cursor: pointer;            /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    padding: 16px 48px;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #0a0e27;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
 }
 
-/* Add hover effect */
 .mainButton:hover {
-    background-color: orange;   /* Change background to orange on hover */
-    transform: scale(1.05);     /* Slight zoom effect */
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
 }
-
-
-
-@keyframes fadeSlide {
-    0% {
-        opacity: 0;
-        transform: translateY(50%);
+.actionsRow {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center;
+    gap: 25px;
+  }
+  
+  
+  @media (min-width: 1024px) {
+    .actionsRow {
+      flex-direction: row;
+      justify-content: center; 
+      align-items: center;    
+      gap: 25px;              
     }
-    100% {
+  }
+  
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.rate-display div {
-    animation: fadeSlide 1s ease-in-out;
-}
-
-.major{
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    /*gap: 400px;*/
-    width: 100%;
-    overflow: hidden;
-
-}
-
-
-    .hidden {
-        display: none; /* Hides the element when not active */
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .slide {
+        padding: 8px 16px;
+        font-size: 12px;
     }
+
+    .major {
+        height: calc(100vh - 56px);
+        padding: 20px 16px;
+    }
+
+    .navArrow {
+        display: none;
+    }
+
+    .slideIndicators {
+        bottom: 20px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content h3 {
+        font-size: 1rem;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 6px 16px;
+    }
+
+    .authButton {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .signUp,
+    .login {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 32px;
+    }
+
+    .cont h1 {
+        font-size: 1.75rem;
+    }
+
+    .bitcoinConversion {
+        padding: 16px;
+        margin: 24px 0;
+    }
+
+    .rateDisplay {
+        font-size: 1.25rem;
+        gap: 8px;
+    }
+
+    .mainButton {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 14px 32px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navArrow {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navArrow svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .content h1 {
+        font-size: 1.5rem;
+    }
+
+    .rateDisplay {
+        font-size: 1rem;
+    }
+
+    .major {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 64px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 1px;
+    }
+
+    
+}
+
+

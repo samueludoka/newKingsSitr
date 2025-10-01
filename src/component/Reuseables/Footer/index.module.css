@@ -1,109 +1,92 @@
-.mainCont{
-    display: flex;
-    flex-direction: row;
-    background-color: #1f2f2d;
-    /*padding-left: 5rem;*/
-    /*gap: 12rem;*/
-    justify-content: space-evenly;
-    cursor: pointer;
-    padding-top: 5rem;
-}
-.companyPara p:hover{
-    color: orangered;
-}
-
-.company h3{
-    padding-bottom: 2rem;
-}
-
-.firstDiv{
-    display: flex;
-    flex-direction: row;
-    gap: 0.3rem;
-    padding-left: 0;
-}
-.logo {
-    height: 100%;
-    width: 100%;
-}
-
-.logo img {
-    height: 100px; /* Increase size here */
-    width: 100px;  /* Increase size here */
-}
-
-
-.firstDiv > h1{
-    font-size: 27px;
-    color: #FFFFFF;
-}
-
-.firstDiv > img{
-    height: 30px;
-    width: 40px;
-    padding-top: 1.4rem;
-}
-
-.mainDiv > p{
-    color: #FFFFFF;
+.footer {
+    background-color: #1c1b1b;
+    color: #ffffff;
+    padding: 60px 20px;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .brand {
     font-size: 0.9rem;
-}
-
-.socialIcon{
+  }
+  
+  .logoRow {
     display: flex;
+    align-items: center;
     gap: 10px;
-    color: #FFFFFF;
-    font-size: 12px;
-    padding-top: 2rem;
-    padding-bottom: 5rem;
-}
-
-.tire{
-    width: 28px;
-    height: 30px;
-    padding-top: 0.2rem;
-}
-
-.youtube{
-    width: 27px;
-    height: 26px;
-    padding-top: 0.4rem;
-    border: #4D4D4D;
-}
-
-.company{
-    color: #FFFFFF;
-}
-
-.companyPara{
+    margin-bottom: 15px;
+  }
+  
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+  
+  .brandName {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .copy {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #ccc;
+  }
+  
+  .motto {
+    font-size: 0.8rem;
+    color: #aaa;
+    line-height: 1.6;
+  }
+  
+  /* Column sections */
+  .column h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  .column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .column li {
+    margin-bottom: 12px;
     font-size: 0.9rem;
-}
-
-input{
-    background: #4D4D4D;
-    border: none;
-    padding: 10px 35px 10px 10px;
-    border-radius: 7px;
-
-}
-
-input::placeholder{
-    color: #D9DBE1;
-    font-weight: 200;
-    font-size: 12px;
-    line-height: 20px;
-}
-
-.send {
-    position: absolute;
-    margin-left: -2rem;
-    margin-top: 0.34rem;
+    color: #d9dbe1;
     cursor: pointer;
-
-}
-@media screen and (max-width: 760px) {
-    .mainCont {
-        flex-direction: column;
+    transition: color 0.3s ease;
+  }
+  
+  .column li:hover {
+    color: orangered;
+  }
+  
+  .contact {
+    font-size: 0.9rem;
+    color: #d9dbe1;
+  }
+  
+  /* Mobile responsiveness */
+  @media screen and (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 30px;
     }
-}
-
+  
+    .logoRow {
+      justify-content: center;
+    }
+  }
+  

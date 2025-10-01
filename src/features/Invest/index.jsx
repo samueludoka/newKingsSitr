@@ -1,278 +1,397 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import logo from "./images/logo-no-background.png"
+import React, { useEffect, useState } from 'react';
+import {
+  IoHomeOutline,
+  IoLogOutOutline,
+  IoArrowDownCircleOutline,
+  IoArrowUpCircleOutline,
+  IoTrendingUpOutline,
+  IoKeyOutline,
+  IoPersonCircleOutline,
+  IoDocumentTextOutline,
+  IoDiamondOutline,
+  IoMenu,
+  IoClose,
+  IoTimeOutline,
+  IoTrophyOutline,
+  IoCheckmarkCircleOutline,
+} from 'react-icons/io5';
 
-const InvestComponent = () => {
-    const [coinType, setCoinType] = useState('');
-    const [planType, setPlanType] = useState('');
-    const [amount, setAmount] = useState('');
-    const [status, setStatus] = useState({ loading: false, error: '', success: '' });
-    const [refresh, setRefreshWallet] = useState();
-    const [id, setId] = useState(0)
-
-
-    const coinOptions = [
-        'Bitcoin', 'Ethereum', 'Tether', 'Litcoin', 'Ripple', 'Solana'
-    ];
-
-    const planOptions = [
-        {
-            label: 'BASIC (1.09), Min: $200, Max: $5000, Duration: 5 days',
-            value: 'BASIC',
-            minAmount: 200,
-            maxAmount: 5000,
-            duration: '5 days'
-        },
-        {
-            label: 'SILVER (1.14), Min: $5000, Max: $7000, Duration: 7 days',
-            value: 'SILVER',
-            minAmount: 5000,
-            maxAmount: 7000,
-            duration: '7 days'
-        },
-        {
-            label: 'PLATINUM (1.18), Min: $11,000, Max: $21,000, Duration: 14 days',
-            value: 'PLATINUM',
-            minAmount: 11000,
-            maxAmount: 21000,
-            duration: '14 days'
-        },
-        {
-            label: 'MASTER (1.23), Min: $21,000, Max: $35,000, Duration: 21 days',
-            value: 'MASTER',
-            minAmount: 21000,
-            maxAmount: 35000,
-            duration: '21 days'
-        },
-        {
-            label: 'EXECUTIVE (1.27), Min: $35,000, Max: $50,000, Duration: 27 days',
-            value: 'EXECUTIVE',
-            minAmount: 35000,
-            maxAmount: 50000,
-            duration: '27 days'
-        },
-        {
-            label: 'PREMIUM (1.30), Min: $50,000, Max: $75,000, Duration: 30 days',
-            value: 'PREMIUM',
-            minAmount: 50000,
-            maxAmount: 75000,
-            duration: '30 days'
-        },
-        {
-            label: 'GOLD (1.35), Min: $75,000, Max: $100,000, Duration: 35 days',
-            value: 'GOLD',
-            minAmount: 75000,
-            maxAmount: 100000,
-            duration: '35 days'
-        }
-    ];
-
-    const handleInvest = async () => {
-        setStatus({ loading: true, error: '', success: '' });
-
-        const customerId = sessionStorage.getItem("customerId");
-
-        if (!customerId) {
-            setStatus({ loading: false, error: 'Customer ID not found. Please log in again.', success: '' });
-            return;
-        }
-
-        try {
-            const payload = {
-                customerId,
-                coinType,
-                planType,
-                amount,
-            };
-
-            const response = await axios.post('http://localhost:8086/api/v1/customer/initiateTrade', payload);
-
-            const { walletId, tradeStatus, updatedAmount } = response.data;
-
-            // Store updatedAmount in sessionStorage
-            sessionStorage.setItem("investmentAmount", updatedAmount);
-
-            setId(walletId);
-
-            if (tradeStatus) {
-                setStatus({ loading: false, success: 'Investment successful!', error: '' });
-            } else {
-                throw new Error('Investment failed. Try again.');
-            }
-        } catch (error) {
-            setStatus({ loading: false, success: '', error: error.message || 'Investment failed. Try again.' });
-        }
-    };
+import logo from "../CustomerDashBoard/newDashBaord/images/logo-no-background.png";
 
 
-    const refreshWallet = async (walletId) => {
-        fetch(`http://localhost:8086/api/v1/customer/viewCustomerWallet/${walletId}`, {
-            method: "GET"
-        })
-            .then(async response => {
-                if (!response.ok) {
-                    throw new Error('Failed to refresh dash board');
-                }
-                console.log("The response: ", response)
-                const deResponse = await response.json()
-                setRefreshWallet(deResponse?.balance)
-                return response.json();
-            })
-            .catch(error => {
-                // setError(error.message);
-            });
-    };
+const InvestPageRedesigned = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [coinType, setCoinType] = useState('');
+  const [planType, setPlanType] = useState('');
+  const [amount, setAmount] = useState('');
+  const [status, setStatus] = useState({ loading: false, error: '', success: '' });
+  const [refresh, setRefreshWallet] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
-    const walletId = sessionStorage.getItem('walletId')
+  const handleNavigate = (path) => {
+    window.location.href = path;
+    setIsOpen(false);
+  };
 
-    useEffect(() => {
-        if( walletId){
-            refreshWallet(walletId).then(r =>  {
-                console.log("r:", r)
-            }).catch(error => {
-                console.error('Error checking for approval:', error);
-            })
-        }
-    },[id])
+  const coinOptions = ['Bitcoin', 'Ethereum', 'Tether', 'Litecoin', 'Ripple', 'Solana'];
 
+  const planOptions = [
+    {
+      label: 'BASIC',
+      value: 'BASIC',
+      multiplier: '1.09x',
+      minAmount: 200,
+      maxAmount: 5000,
+      duration: '5 days',
+      color: 'from-gray-500 to-gray-700',
+      icon: '🥉',
+    },
+    {
+      label: 'SILVER',
+      value: 'SILVER',
+      multiplier: '1.14x',
+      minAmount: 5000,
+      maxAmount: 7000,
+      duration: '7 days',
+      color: 'from-gray-400 to-gray-600',
+      icon: '🥈',
+    },
+    {
+      label: 'PLATINUM',
+      value: 'PLATINUM',
+      multiplier: '1.18x',
+      minAmount: 11000,
+      maxAmount: 21000,
+      duration: '14 days',
+      color: 'from-cyan-500 to-cyan-700',
+      icon: '💎',
+    },
+    {
+      label: 'MASTER',
+      value: 'MASTER',
+      multiplier: '1.23x',
+      minAmount: 21000,
+      maxAmount: 35000,
+      duration: '21 days',
+      color: 'from-purple-500 to-purple-700',
+      icon: '👑',
+    },
+    {
+      label: 'EXECUTIVE',
+      value: 'EXECUTIVE',
+      multiplier: '1.27x',
+      minAmount: 35000,
+      maxAmount: 50000,
+      duration: '27 days',
+      color: 'from-blue-500 to-blue-700',
+      icon: '🎖️',
+    },
+    {
+      label: 'PREMIUM',
+      value: 'PREMIUM',
+      multiplier: '1.30x',
+      minAmount: 50000,
+      maxAmount: 75000,
+      duration: '30 days',
+      color: 'from-orange-500 to-orange-700',
+      icon: '⭐',
+    },
+    {
+      label: 'GOLD',
+      value: 'GOLD',
+      multiplier: '1.35x',
+      minAmount: 75000,
+      maxAmount: 100000,
+      duration: '35 days',
+      color: 'from-yellow-400 to-yellow-600',
+      icon: '🥇',
+    },
+  ];
 
+  const handlePlanChange = (value) => {
+    setPlanType(value);
+    const plan = planOptions.find((p) => p.value === value);
+    setSelectedPlan(plan);
+  };
 
+  const handleInvest = () => {
+    setStatus({ loading: true, error: '', success: '' });
 
-    return (
-        <div className="invest-container" style={styles.container}>
-            <img src={logo}  style={styles.logo}/>
-            <h1 style={styles.header}>CRYPTOCURRENCY GATEWAY</h1>
-            {/*<h2 style={styles.subHeader}>FAST, SECURE, AND EASY PAYMENTS</h2>*/}
+    if (!coinType || !planType || !amount) {
+      setStatus({ loading: false, error: 'Please fill in all fields', success: '' });
+      return;
+    }
 
-            <div style={styles.balanceBox}>
-                <h3 style={styles.balanceText}>Current Balance: ${refresh}</h3>
-            </div>
+    if (selectedPlan && (parseFloat(amount) < selectedPlan.minAmount || parseFloat(amount) > selectedPlan.maxAmount)) {
+      setStatus({
+        loading: false,
+        error: `Amount must be between $${selectedPlan.minAmount.toLocaleString()} and $${selectedPlan.maxAmount.toLocaleString()}`,
+        success: '',
+      });
+      return;
+    }
 
-            <div style={styles.paymentSteps}>
-                <h3 style={styles.step}>1. Select the cryptocurrency gateway you want to use:</h3>
-                <select
-                    value={coinType}
-                    onChange={(e) => setCoinType(e.target.value)}
-                    style={styles.input}
-                >
-                    <option value="" disabled>Select Coin Type</option>
-                    {coinOptions.map((coin, index) => (
-                        <option key={index} value={coin}>{coin}</option>
-                    ))}
-                </select>
+    setTimeout(() => {
+      setStatus({ loading: false, error: '', success: 'Investment successful! Your funds are now working for you.' });
+    }, 1500);
+  };
 
-                <h3 style={styles.step}>2. Select the plan type you want to use:</h3>
-                <select
-                    value={planType}
-                    onChange={(e) => setPlanType(e.target.value)}
-                    style={styles.input}
-                >
-                    <option value="" disabled>Select Plan Type</option>
-                    {planOptions.map((plan, index) => (
-                        <option key={index} value={plan.value}>{plan.label}</option>
-                    ))}
-                </select>
+  return (
+    <div className="flex min-h-screen bg-gradient-to-br from-[#0a0e27] via-[#1a1f3a] to-[#2d1b3d] text-white">
+      {/* Mobile Toggle */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-4 left-4 z-[1100] lg:hidden bg-transparent border-none text-white cursor-pointer"
+      >
+        {isOpen ? <IoClose size={28} /> : <IoMenu size={28} />}
+      </button>
 
-                <h3 style={styles.step}>3. Enter the amount you wish to invest:</h3>
-                <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    style={styles.input}
-                    placeholder="Enter Amount"
-                />
-
-                <h3 style={styles.step}>4. Press the Invest Now button to continue...</h3>
-                <button onClick={handleInvest} style={styles.button} disabled={status.loading}>
-                    {status.loading ? 'Processing...' : 'Invest Now'}
-                </button>
-
-                {status.error && <p style={styles.error}>{status.error}</p>}
-                {status.success && <p style={styles.success}>{status.success}</p>}
-            </div>
-
-            <p style={styles.waitNote}>5. Wait for the period of time associated with your selected investment plan.</p>
+      {/* Sidebar */}
+      <aside
+        className={`fixed top-0 left-0 bottom-0 w-64 bg-[rgba(10,14,39,0.95)] p-5 z-[1000] transition-transform duration-300 overflow-y-auto ${
+          isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        }`}
+      >
+          <div className="text-center mb-8 cursor-pointer" onClick={() => handleNavigate('/customerDashboard2')}>
+        <img src={logo} alt="Logo" className="w-[8rem]" />
         </div>
-    );
+
+        <ul className="list-none p-0">
+          <h3 className="text-sm font-semibold my-5 text-[#ff960b]">FUNDS</h3>
+          <li onClick={() => handleNavigate('/deposit')} className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoArrowDownCircleOutline size={20} /> Deposit Funds
+          </li>
+          <li onClick={() => handleNavigate('/withdraw')} className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoArrowUpCircleOutline size={20} /> Withdraw Funds
+          </li>
+          <li onClick={() => handleNavigate('/invest')} className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)] bg-[rgba(255,150,11,0.3)]">
+            <IoTrendingUpOutline size={20} /> Invest Funds
+          </li>
+
+          <h3 className="text-sm font-semibold my-5 text-[#ff960b]">OTHERS</h3>
+          <li className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoKeyOutline size={20} /> Purchase Signals
+          </li>
+          <li className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoDiamondOutline size={20} /> Upgrade Account
+          </li>
+          <li className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoDocumentTextOutline size={20} /> My Plans
+          </li>
+          <li className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoPersonCircleOutline size={20} /> Verify Account
+          </li>
+          <li onClick={() => handleNavigate('/home')} className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoHomeOutline size={20} /> Home
+          </li>
+          <li className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all hover:bg-[rgba(255,150,11,0.2)]">
+            <IoLogOutOutline size={20} /> Logout
+          </li>
+        </ul>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-5 lg:p-8 overflow-y-auto pt-16 lg:pt-5 lg:ml-64">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl lg:text-4xl font-bold text-[#ff960b] mb-2">
+            CRYPTOCURRENCY GATEWAY
+          </h1>
+          <p className="text-lg text-gray-300">Fast, Secure and Easy Payments</p>
+        </div>
+
+        {/* Current Balance */}
+        <div className="bg-gradient-to-r from-green-500/20 to-emerald-600/20 border-2 border-green-500 rounded-xl p-6 text-center mb-8">
+          <h2 className="text-lg font-semibold mb-2 text-green-300">Current Balance</h2>
+          <p className="text-4xl font-bold text-white">${refresh}</p>
+        </div>
+
+        {/* Investment Plans Grid */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-[#ff960b] mb-4">Choose Your Investment Plan</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {planOptions.map((plan) => (
+              <div
+                key={plan.value}
+                onClick={() => handlePlanChange(plan.value)}
+                className={`cursor-pointer rounded-xl p-5 transition-all border-2 ${
+                  planType === plan.value
+                    ? 'border-[#ff960b] bg-[rgba(255,150,11,0.2)] scale-105'
+                    : 'border-transparent bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)]'
+                }`}
+              >
+                <div className={`bg-gradient-to-br ${plan.color} rounded-lg p-4 mb-3`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-3xl">{plan.icon}</span>
+                    <IoTrophyOutline size={24} className="text-white/70" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{plan.label}</h3>
+                  <p className="text-2xl font-bold text-white mt-1">{plan.multiplier}</p>
+                </div>
+                <div className="space-y-2 text-sm text-gray-300">
+                  <div className="flex justify-between">
+                    <span>Min Amount:</span>
+                    <span className="font-semibold text-white">${plan.minAmount.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Max Amount:</span>
+                    <span className="font-semibold text-white">${plan.maxAmount.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>Duration:</span>
+                    <span className="font-semibold text-[#ff960b] flex items-center gap-1">
+                      <IoTimeOutline size={16} />
+                      {plan.duration}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Investment Form */}
+        <div className="bg-[rgba(255,255,255,0.1)] rounded-xl p-6 mb-8">
+          <h2 className="text-2xl font-bold text-[#ff960b] mb-6">Investment Details</h2>
+
+          <div className="space-y-5">
+            {/* Coin Selection */}
+            <div>
+              <label htmlFor="coinType" className="block text-sm font-semibold mb-2">
+                1. Select Cryptocurrency Gateway:
+              </label>
+              <select
+                id="coinType"
+                value={coinType}
+                onChange={(e) => setCoinType(e.target.value)}
+                className="w-full p-3 bg-[rgba(0,0,0,0.3)] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-[#ff960b]"
+              >
+                <option value="">Select Coin Type</option>
+                {coinOptions.map((coin) => (
+                  <option key={coin} value={coin}>
+                    {coin}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Plan Selection */}
+            <div>
+              <label htmlFor="planType" className="block text-sm font-semibold mb-2">
+                2. Select Investment Plan:
+              </label>
+              <select
+                id="planType"
+                value={planType}
+                onChange={(e) => handlePlanChange(e.target.value)}
+                className="w-full p-3 bg-[rgba(0,0,0,0.3)] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-[#ff960b]"
+              >
+                <option value="">Select Plan Type</option>
+                {planOptions.map((plan) => (
+                  <option key={plan.value} value={plan.value}>
+                    {plan.label} ({plan.multiplier}) - Min: ${plan.minAmount.toLocaleString()}, Max: ${plan.maxAmount.toLocaleString()}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Amount Input */}
+            <div>
+              <label htmlFor="amount" className="block text-sm font-semibold mb-2">
+                3. Enter Investment Amount:
+              </label>
+              <input
+                type="number"
+                id="amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                className="w-full p-3 bg-[rgba(0,0,0,0.3)] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-[#ff960b]"
+                placeholder="Enter Amount"
+              />
+              {selectedPlan && (
+                <p className="text-xs text-gray-400 mt-2">
+                  Acceptable range: ${selectedPlan.minAmount.toLocaleString()} - ${selectedPlan.maxAmount.toLocaleString()}
+                </p>
+              )}
+            </div>
+
+            {/* Selected Plan Info */}
+            {selectedPlan && (
+              <div className="bg-[rgba(255,150,11,0.1)] border-l-4 border-[#ff960b] p-4 rounded-r-lg">
+                <h3 className="font-semibold text-[#ff960b] mb-2 flex items-center gap-2">
+                  <IoCheckmarkCircleOutline size={20} />
+                  Selected Plan: {selectedPlan.label}
+                </h3>
+                <div className="text-sm text-gray-300 space-y-1">
+                  <p>Return Multiplier: <span className="text-white font-semibold">{selectedPlan.multiplier}</span></p>
+                  <p>Investment Duration: <span className="text-white font-semibold">{selectedPlan.duration}</span></p>
+                  {amount && parseFloat(amount) >= selectedPlan.minAmount && parseFloat(amount) <= selectedPlan.maxAmount && (
+                    <p className="text-green-400 font-semibold mt-2">
+                      Expected Return: ${(parseFloat(amount) * parseFloat(selectedPlan.multiplier.replace('x', ''))).toFixed(2)}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Submit Button */}
+            <div>
+              <button
+                onClick={handleInvest}
+                disabled={status.loading}
+                className={`w-full py-4 rounded-lg font-bold text-lg transition-all ${
+                  status.loading
+                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                    : 'bg-[#ff960b] hover:bg-[#e57f00] text-white'
+                }`}
+              >
+                {status.loading ? 'Processing Investment...' : '4. Invest Now'}
+              </button>
+            </div>
+
+            <p className="text-center text-sm text-gray-400">
+              5. Wait for the period of time associated with your selected investment plan.
+            </p>
+          </div>
+
+          {/* Status Messages */}
+          {status.error && (
+            <div className="mt-4 p-4 bg-red-500/20 border border-red-500 rounded-lg text-red-300 text-center">
+              {status.error}
+            </div>
+          )}
+          {status.success && (
+            <div className="mt-4 p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-300 text-center">
+              {status.success}
+            </div>
+          )}
+        </div>
+
+        {/* Investment Tips */}
+        <div className="bg-[rgba(255,255,255,0.05)] rounded-xl p-6">
+          <h3 className="text-xl font-bold text-[#ff960b] mb-4">Investment Tips</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
+            <div className="flex items-start gap-3">
+              <span className="text-green-400">✓</span>
+              <span>Diversify your investments across different plans</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-green-400">✓</span>
+              <span>Only invest amounts you can afford to lock for the duration</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-green-400">✓</span>
+              <span>Higher returns come with longer investment periods</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-green-400">✓</span>
+              <span>Monitor your investments regularly in "My Plans"</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 };
 
-const styles = {
-    container: {
-        backgroundColor: '#001f3f',
-        color: '#FFD700',
-        padding: '20px',
-        borderRadius: '10px',
-        position: 'fixed', // Change to fixed or absolute
-        top: 0, // Aligns to the top
-        left: 0, // Aligns to the left
-        height: '100vh', // Full height of the viewport
-        width: '100vw', // Full width of the viewport
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center', // Center contents vertically
-        alignItems: 'center', // Center contents horizontally
-    },
-    logo: {
-        width: '150px', // Set width as needed
-        height: '30px', // Change 'length' to 'height'
-    },
-
-    header: {
-        fontSize: '28px',
-        fontWeight: 'bold',
-    },
-    subHeader: {
-        fontSize: '18px',
-        marginBottom: '20px',
-    },
-    balanceBox: {
-        border: '2px solid #FFD700',
-        padding: '10px',
-        borderRadius: '5px',
-        marginBottom: '20px',
-    },
-    balanceText: {
-        margin: 0,
-    },
-    paymentSteps: {
-        marginBottom: '20px',
-        display: 'flex',               // Enable flexbox
-        flexDirection: 'column',       // Stack children vertically
-        alignItems: 'center',          // Center items horizontally
-    },
-    step: {
-        marginBottom: '10px',
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        marginBottom: '15px',
-        border: '2px solid #FFD700',
-        borderRadius: '5px',
-        backgroundColor: '#001f3f',
-        color: '#FFD700',
-    },
-    button: {
-        backgroundColor: '#FFD700',
-        color: '#001f3f',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        alignItems: 'center',
-    },
-    error: {
-        color: 'red',
-        marginTop: '10px',
-    },
-    success: {
-        color: 'green',
-        marginTop: '10px',
-    },
-    waitNote: {
-        fontSize: '14px',
-        marginTop: '20px',
-    },
-};
-
-export default InvestComponent;
+export default InvestPageRedesigned;

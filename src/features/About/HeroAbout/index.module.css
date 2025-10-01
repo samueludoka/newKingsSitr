@@ -1,94 +1,120 @@
-/* Main container */
+/* Main container with background */
 .mainContain {
-    background-color: blue; /* Background color */
-    color: #FFFFFF; /* Text color */
-    /*padding: 2rem; !* Padding for all screens *!*/
-    /*max-width: 12000px; !* Corrected max width for larger screens *!*/
-    margin: 0 auto; /* Center the container */
-    /*display: flex; !* Use flexbox for layout *!*/
-    flex-direction: row; /* Default to stacking elements side by side */
-    align-items: center; /* Center content vertically */
+    position: relative;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b3d 100%);
+    color: #fff;
+    padding: 4rem 8%;
+    overflow: hidden;
 }
 
-/* Hero words */
-.heroWord {
-    padding-top: 5rem;
-    text-align: center;
-    padding-bottom: 2rem;
+/* Optional background overlay (you can use your img1.png here) */
+.mainContain::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url("./Images/img1.png") no-repeat center/cover;
+    opacity: 0.15;  /* faint overlay */
+    z-index: 0;
 }
-.herodiv{
+
+.herodiv {
+    position: relative;
     display: flex;
-
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    z-index: 1; /* ensure above overlay */
+    flex-wrap: wrap; /* wrap for smaller screens */
 }
-.background{
-    width: 1400px;
-    height: 400px;
+
+/* Text section */
+.heroWord {
+    flex: 1;
+    min-width: 280px;
 }
 
-/* Subheading */
 .subHead {
-    font-size: 2rem; /* Font size for subheading */
-    margin-bottom: 1rem; /* Space below the subheading */
-    margin-left: 8rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff960b;
+    margin-bottom: 1.5rem;
 }
 
-/* Higher paragraph */
 .higherP {
-    font-size: 15px; /* Font size for higher paragraph */
-    line-height: 1.5; /* Line height for readability */
-    margin-bottom: 1rem;
-    margin-left: 10rem; /* Space to the left */
-    max-width: 800px;
-
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
 }
 
-/* Lower paragraph */
 .lowerP {
-    font-size: 12px; /* Font size for lower paragraph */
-    line-height: 1.5; /* Line height for readability */
-    margin-left: 10rem; /* Space to the left */
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 650px;
 }
 
-/* Hero image */
+/* Image section */
+.imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .heroImage {
-    width: 100%; /* Make image responsive */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 600px; /* Max width for larger screens */
-    border-radius: 10px; /* Optional: Rounded corners */
-    margin-top: 1rem; /* Space above the image */
-    /*margin-left: 20rem; !* Space to the left *!*/
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Responsive adjustments for medium screens (tablets, small desktops) */
-@media screen and (max-width: 1024px) {
-    .subHead {
-        font-size: 1.8rem; /* Reduce font size */
-    }
-
-    .higherP, .lowerP {
-        font-size: 1.1rem; /* Slightly reduce font size */
-    }
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+    .subHead { font-size: 1.8rem; }
+    .higherP, .lowerP { font-size: 1rem; }
 }
 
-/* Responsive adjustments for mobile screens */
-@media screen and (max-width: 768px) {
-    .mainContain {
-        flex-direction: column; /* Change to column layout for mobile */
-        align-items: center; /* Center items */
-        padding: 1rem; /* Reduce padding for mobile */
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .herodiv {
+        flex-direction: column;
+        text-align: center;
     }
 
     .subHead {
-        font-size: 1.5rem; /* Further reduce font size */
-        margin-left: 0; /* Remove left margin */
+        font-size: 1.5rem;
     }
 
     .higherP, .lowerP {
-        font-size: 1rem; /* Further reduce font size */
-        margin-left: 0; /* Remove left margin */
+        margin: 0 auto 1.2rem;
+    }
+
+    .imageWrapper {
+        margin-top: 2rem;
     }
 
     .heroImage {
-        margin-left: 0; /* Remove left margin for the image */
+        max-width: 350px;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .mainContain {
+        padding: 2rem 1rem;
+    }
+
+    .subHead {
+        font-size: 1.3rem;
+    }
+
+    .higherP, .lowerP {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .heroImage {
+        max-width: 280px;
     }
 }

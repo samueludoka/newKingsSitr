@@ -1,145 +1,91 @@
 /* Main container */
 .mainContent {
-    background-color: darkblue; /* Background color */
-    padding-top: 2rem; /* Top padding */
-    padding-bottom: 2rem; /* Bottom padding */
-    padding-left: 5rem; /* Left padding */
-    color: #FFFFFF; /* Default text color */
-}
-
-/* Vision and Mission */
-.Vision, .Mission {
-    color: #FFFFFF; /* Text color */
-}
-
-/* Subheading */
-.subHead {
-    font-size: 25px;
-    font-family: Arial;
-    font-weight: bold;
-}
-
-/* Tail paragraph */
-.tail {
-    font-size: 12px;
-}
-
-/* First division */
-.firstDiv {
-    display: flex; /* Use flexbox layout */
-    justify-content: space-evenly;
-    padding-right: 15rem;
-    gap: 8rem;
-}
-
-/* Second division */
-.secondDiv {
-    display: flex; /* Use flexbox layout */
-    padding-top: 4rem; /* Space above secondDiv */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    justify-content: space-evenly;
-    padding-left: 5rem;
-}
-.imgDiv{
+    background: linear-gradient(135deg, #0a0e27, #1a1f3a, #2d1b3d);
+    color: #fff;
+    padding: 4rem 2rem;
     display: flex;
-    /*justify-content: center;*/
-    align-items: center;
-
-}
-.customer{
-    max-width: 100%;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  /* Vision & Mission */
+  .firstDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Subheading */
+  .subHead {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* Tail text */
+  .tail {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  
+  /* Customer Centric + Professional */
+  .secondDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  
+  .infoBlock {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .imgDiv {
+    flex-shrink: 0;
+  }
+  
+  .icon {
+    width: 70px;
     height: 70px;
-    /*padding-right: 20rem;*/
-}
-.professional{
-    max-width: 100%;
-    height: 70px;
-    /*padding-right: 15rem;*/
-}
-/* Centric and scent sections */
-.Centric, .scent {
-    display: block; /* Use flexbox layout */
-    color: #FFFFFF; /* Text color */
-    padding-top: 2rem; /* Space above sections */
-    flex: 1; /* Allow equal flex grow */
-    min-width: 250px; /* Minimum width for each section */
-    /*justify-content: space-around*/
-
-}
-
-/* CentricWord and scentWord */
-.CentricWord, .scentWord {
-    /*padding-left: 0.5rem; !* Space between image and text *!*/
-}
-
-/* Responsive adjustments for medium screens (tablets, small desktops) */
-@media screen and (max-width: 1024px) {
-    .mainContent {
-        padding-left: 2rem; /* Reduce left padding */
-    }
-
+    object-fit: contain;
+  }
+  
+  .wordBlock {
+    flex: 1;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
     .subHead {
-        font-size: 2rem; /* Reduce font size */
+      font-size: 1.5rem;
     }
-
+  
     .tail {
-        font-size: 1.2rem; /* Slightly reduce font size */
+      font-size: 0.95rem;
     }
-
-    .Mission {
-        padding-left: 0; /* Remove left padding on smaller screens */
-
+  
+    .infoBlock {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
     }
-    .firstDiv {
-        justify-content: center; /* Center align the items */
-        text-align: center; /* Center align the text */
+  
+    .wordBlock {
+      margin-top: 1rem;
     }
-
-    .secondDiv {
-        flex-direction: column; /* Stack Centric and scent sections vertically */
-        align-items: center; /* Center align */
-        /*padding-right: 5rem;*/
-    }
-
-    .Centric, .scent {
-        min-width: 100%; /* Allow sections to take full width */
-        justify-content: center; /* Center align content */
-        padding-left: 0; /* Remove left padding */
-    }
-
-    .CentricWord, .scentWord {
-        padding-left: 0; /* Remove padding */
-    }
-}
-
-/* Responsive adjustments for mobile screens */
-@media screen and (max-width: 768px) {
-    .mainContent {
-        padding-left: 1rem; /* Further reduce left padding */
-        padding-right: 1rem; /* Add right padding for mobile */
-    }
-
-    .subHead {
-        font-size: 1.5rem; /* Further reduce font size */
-    }
-    .firstDiv {
-        justify-content: center; /* Center align the items */
-        text-align: center; /* Center align the text */
-    }
-
-    .Vision, .Mission {
-        flex: 1; /* Allow the sections to take equal space */
-        padding: 1rem; /* Optional: Add some padding for spacing */
-    }
-
-    .tail {
-        font-size: 1rem; /* Further reduce font size */
-    }
-
-    .Centric, .scent {
-        flex-direction: column; /* Stack content vertically */
-        align-items: center; /* Center align content */
-        min-width: auto; /* Remove minimum width constraint */
-        padding-left: 0; /* Remove padding */
-    }
-}
+  }
+  

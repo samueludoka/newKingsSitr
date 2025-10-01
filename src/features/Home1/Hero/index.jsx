@@ -16,23 +16,17 @@ const Hero = () =>{
     const [currentIndex, setCurrentIndex] = useState(true);
     const navigate = useNavigate();
 
-
     const handleClick = () => {
         navigate('/customerDashboard2');
     };
 
+    const handlePrevious = () => {
+        setCurrentIndex(prev => !prev);
+    };
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 10000,
-        slidesToShow: 8,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 0,
-        cssEase: "linear",
-        arrows: false
-    }
+    const handleNext = () => {
+        setCurrentIndex(prev => !prev);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -45,115 +39,134 @@ const Hero = () =>{
         const interval = setInterval(() => {
             setCurrentCurrency((prevCurrency) => (prevCurrency + 1) % currencies.length);
             setCurrentIndex((prevIndex) => !prevIndex );
-        }, 10000); // Change currency every 3 seconds
+        }, 10000);
 
         return () => clearInterval(interval);
     }, []);
+    
     const currentRate = rates[currencies[currentCurrency].toLowerCase()];
 
-    const dataObject =  [
-        {"id": "bitcoin"},
-        {"symbol": "btc"},
-        {"name": "Bitcoin"},
-        {"image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"},
-        {"current_price": 70187},
-        {"market_cap": 1381651251183},
-        {"market_cap_rank": 1},
-        {"fully_diluted_valuation": 1474623675796},
-        {"total_volume": 20154184933},
-        {"high_24h": 70215},
-        {"low_24h": 68060},
-        {"price_change_24h": 2126.88},
-        {"price_change_percentage_24h": 3.12502},
-        {"market_cap_change_24h": 44287678051},
-        {"market_cap_change_percentage_24h": 3.31157},
-        {"circulating_supply": 19675987},
-        {"total_supply": 21000000},
-        {"max_supply": 21000000},
-        {"ath": 73738},
-        {"ath_change_percentage": -4.77063},
-        {"ath_date": "2024-03-14T07:10:36.635Z"},
-        {"atl": 67.81},
-        {"atl_change_percentage": 103455.83335},
-        // "atl_date": "2013-07-06T00:00:00.000Z",
-        // "roi": null,
-        // "last_updated": "2024-04-07T16:49:31.736Z"
-    ]
-    return(
+    const dataSlides = [
+        { label: "id", value: "bitcoin" },
+        { label: "symbol", value: "btc" },
+        { label: "name", value: "Bitcoin" },
+        { type: "image", src: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" },
+        { label: "price", value: "70187" },
+        { label: "high_24h", value: "70215" },
+        { label: "low_24h", value: "68060" },
+        { label: "ath", value: "73738" },
+        { label: "total_supply", value: "21000000" },
+        { label: "percentage_24h", value: "3.12502" }
+    ];
 
+    return(
         <div className={styles.maincontain}>
             <div className={styles.slider}>
                 <div className={styles.slider_track}>
-                    <div className={styles.slide}>id: bitcoin</div>
-                    <div className={styles.slide}>symbol: btc</div>
-                    <div className={styles.slide}>name: Bitcoin</div>
-                    <div className={styles.slide}>
-                        <img width='40px' height='40px'
-                             src='https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400'/>
-                    </div>
-                    <div className={styles.slide}>price: 70187</div>
-                    <div className={styles.slide}>high_24h: 70215</div>
-                    <div className={styles.slide}>low_24h: 68060</div>
-                    <div className={styles.slide}>ath: 73738</div>
-                    <div className={styles.slide}>total_supply: 21000000</div>
-                    <div className={styles.slide}>ath: 73738</div>
-                    <div className={styles.slide}>percentage_24h: 3.12502</div>
-                    <div className={styles.slide}>id: bitcoin</div>
-                    <div className={styles.slide}>symbol: btc</div>
-                    <div className={styles.slide}>name: Bitcoin</div>
-                    <div className={styles.slide}><img width='40px' height='40px'
-                                                       src='https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400'/>
-                    </div>
-                    <div className={styles.slide}>price: 70187</div>
-                    <div className={styles.slide}>high_24h: 70215</div>
-                    <div className={styles.slide}>low_24h: 68060</div>
-                    <div className={styles.slide}>ath: 73738</div>
-                    <div className={styles.slide}>total_supply: 21000000</div>
-                    <div className={styles.slide}>ath: 73738</div>
-                    <div className={styles.slide}>percentage_24h: 3.12502</div>
+                    {[...dataSlides, ...dataSlides, ...dataSlides].map((item, index) => (
+                        <div key={index} className={styles.slide}>
+                            {item.type === "image" ? (
+                                <img width='40px' height='40px' src={item.src} alt="Bitcoin"/>
+                            ) : (
+                                `${item.label}: ${item.value}`
+                            )}
+                        </div>
+                    ))}
                 </div>
             </div>
+
             <div className={styles.major}>
-                { currentIndex &&
-            <div className={styles.innerContents}>
-                <div className={`${styles.content}`}>
-                    <h1><span>Crypto ETPs, </span><br/>Your Gateway To The <br/>Digital <span
-                        className={styles.piantGold}>Investment </span>World.</h1>
-                    <h3>Investment Services Tailored <br/>To Meet Your Individual Need</h3>
+                {/* Navigation Arrows */}
+                <button 
+                    className={`${styles.navArrow} ${styles.navArrowLeft}`}
+                    onClick={handlePrevious}
+                    aria-label="Previous slide"
+                >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+
+                <button 
+                    className={`${styles.navArrow} ${styles.navArrowRight}`}
+                    onClick={handleNext}
+                    aria-label="Next slide"
+                >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+                {/* Slide Indicators */}
+                <div className={styles.slideIndicators}>
+                    <span 
+                        className={`${styles.indicator} ${currentIndex ? styles.indicatorActive : ''}`}
+                        onClick={() => setCurrentIndex(true)}
+                    />
+                    <span 
+                        className={`${styles.indicator} ${!currentIndex ? styles.indicatorActive : ''}`}
+                        onClick={() => setCurrentIndex(false)}
+                    />
                 </div>
 
-
-                <div className={styles.authButton}>
-
-                    <button className={styles.signUp} onClick={() => navigate('/sign-up')}>
-                        Sign Up
-                    </button>
-                    <button className={styles.login} onClick={() => navigate('/login')}>
-                        Login
-                    </button>
-                </div>
-            </div>
-                }
-                {!currentIndex && (
-                    <div className={styles.content2}>
-                        <div className={styles.cont}>
-                            <p style={{color: "gold"}}>Investment Consulting</p>
-                            <h1>Manage And Grow <br/>Your Investments</h1>
-                            <button className={styles.mainButton} onClick={handleClick}>
-                                Account
-                            </button>
-                            <div className={styles.bitcoinConversion}>
-                                <div className={styles.rateDisplay}>
-                                    1 BTC = {currentRate ? currentRate.toFixed(2) : '...'} {currencies[currentCurrency]}
-                                </div>
-                            </div>
+                {currentIndex && (
+                    <div className={styles.innerContents}>
+                        <div className={styles.content}>
+                            <div className={styles.badge}>Welcome to the Future</div>
+                            <h1>
+                                <span className={styles.highlight}>Crypto ETPs, </span>
+                                <br/>Your Gateway To The <br/>Digital <span className={styles.piantGold}>Investment </span>World.
+                            </h1>
+                            <h3>Investment Services Tailored <br/>To Meet Your Individual Need</h3>
                         </div>
 
+                        <div className={styles.authButton}>
+                            <button className={styles.signUp} onClick={() => navigate('/sign-up')}>
+                                Sign Up
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                            <button className={styles.login} onClick={() => navigate('/login')}>
+                                Login
+                            </button>
+                        </div>
                     </div>
                 )}
-            </div>
 
+                {!currentIndex && (
+                    <div className={styles.content2}>
+                    <div className={styles.cont}>
+                      <div className={styles.badge}>Investment Consulting</div>
+                      <h1>Manage And Grow <br/>Your Investments</h1>
+                      <p className={styles.subtitle}>Professional guidance for your crypto journey</p>
+                  
+                      <div className={styles.actionsRow}>
+                        <div className={styles.bitcoinConversion}>
+                          <div className={styles.rateDisplay}>
+                            <span className={styles.btcLabel}>1 BTC</span>
+                            <span className={styles.equals}>=</span>
+                            <span className={styles.rateValue}>
+                              {currentRate ? currentRate.toLocaleString(undefined, { maximumFractionDigits: 2 }) : '...'}
+                            </span>
+                            <span className={styles.currency}>{currencies[currentCurrency]}</span>
+                          </div>
+                        </div>
+                  
+                        <button className={styles.mainButton} onClick={handleClick}>
+                          Go to Account
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                )}
+            </div>
         </div>
     );
 }
+
 export default Hero;
