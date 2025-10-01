@@ -1,8 +1,16 @@
 import logo from "./images/logo-no-background.png";
 import style from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const date = new Date().getFullYear();
+  const navigate = useNavigate();
+
+  const handleClick = (page) => {
+    navigate(page);
+    
+};
+
 
   return (
     <footer className={style.footer}>
@@ -29,12 +37,12 @@ const Footer = () => {
         <div className={style.column}>
           <h3>Company</h3>
           <ul>
-            <li>Home</li>
-            <li>Service</li>
-            <li>Buy Crypto</li>
-            <li>About</li>
+            <li onClick={()=>handleClick("/home")}>Home</li>
+            <li onClick={()=>handleClick("/service")}>Service</li>
+            <li onClick={()=>handleClick("/home")} >Buy Crypto</li>
+            <li onClick={()=>handleClick("/about")}>About</li>
             <li>Product</li>
-            <li>FAQ</li>
+            <li onClick={()=>handleClick("/FAQss")}>FAQ</li>
           </ul>
         </div>
 
@@ -42,9 +50,9 @@ const Footer = () => {
         <div className={style.column}>
           <h3>Register</h3>
           <ul>
-            <li>Sign Up</li>
-            <li>Login</li>
-            <li>Account</li>
+            <li onClick={()=>handleClick("/sign-up")}>Sign Up</li>
+            <li onClick={()=>handleClick("/login")}>Login</li>
+            <li onClick={()=>handleClick("/customerDashboard2")}>Account</li>
           </ul>
         </div>
 
