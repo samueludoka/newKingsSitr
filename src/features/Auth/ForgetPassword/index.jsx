@@ -19,7 +19,7 @@ const ResetPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://localhost:8086/api/v1/customer/verify-email/${encodeURIComponent(email)}`;
+            const url = `https://api.nextcents.com/api/v1/customer/verify-email/${encodeURIComponent(email)}`;
 
             const response = await axios.post(url, { email });
             console.log('API Response:', response); // Debugging: Check the entire response

@@ -73,7 +73,7 @@ const DashBoardStructure = () => {
     // Function to fetch payments by email
     const fetchPayments = () => {
         setLoadingPayments(true);
-        fetch(`http://localhost:8086/api/v1/customer/getAllCustomerByWalletId`)
+        fetch(`https://api.nextcents.com/api/v1/customer/getAllCustomerByWalletId`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch payments');
@@ -112,7 +112,7 @@ const DashBoardStructure = () => {
         }
 
         // If the ID exists, make the fetch request
-        fetch(`http://localhost:8086/api/v1/customer/approveFund/${id}`, {
+        fetch(`https://api.nextcents.com/api/v1/customer/approveFund/${id}`, {
             method: 'POST',
         })
             .then(async response => {
@@ -136,7 +136,7 @@ const DashBoardStructure = () => {
 
     // Function to delete customer
     const deleteCustomer = (customerId) => {
-        fetch(`http://localhost:8086/api/v1/customer/deleteCustomer/${customerId}`, {
+        fetch(`https://api.nextcents.com/api/v1/customer/deleteCustomer/${customerId}`, {
             method: 'DELETE',
         })
             .then(response => {
@@ -153,7 +153,7 @@ const DashBoardStructure = () => {
     };
     const fetchWithdraws = () => {
         setLoadingWithdraws(true);
-        fetch(`http://localhost:8086/api/v1/customer/getAllCustomerByWalletId`)
+        fetch(`https://api.nextcents.com/api/v1/customer/getAllCustomerByWalletId`)
             .then(async response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch withdrawals');

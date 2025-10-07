@@ -24,7 +24,7 @@ const AdminLogin = () => {
 
         try {
             // Call backend API for admin login
-            const response = await fetch('http://localhost:8086/api/v1/customer/adminLogin', {
+            const response = await fetch('https://api.nextcents.com/api/v1/customer/adminLogin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -8,8 +8,8 @@ import axios from "axios";
 const WithdrawPage = ({depositSuccessMessage = "Deposit successful",
                       investSuccessMessage = "Investment completed",
                       withdrawSuccessMessage = "Withdrawal processed",
-                      investUrl = 'https://localhost:8086/api/v1/customer/invest',
-                      withdrawUrl = 'https://localhost:8086/api/v1/customer/withdraw'}) => {
+                      investUrl = 'https://api.nextcents.com/api/v1/customer/invest',
+                      withdrawUrl = 'https://api.nextcents.com/api/v1/customer/withdraw'}) => {
     const [currentSection, setCurrentSection] = useState('Deposit');
     const [coinType, setCoinType] = useState('Bitcoin');
     const [depositAmount, setDepositAmount] = useState('');
@@ -63,7 +63,7 @@ const WithdrawPage = ({depositSuccessMessage = "Deposit successful",
                 customerWalletAddress: customerAddress
             };
 
-            const response = await axios.post('http://localhost:8086/api/v1/customer/withdrawFunds', payload);
+            const response = await axios.post('https://api.nextcents.com/api/v1/customer/withdrawFunds', payload);
             console.log('withdrawal response', response);
 
             const { paymentStatus, balance, id } = response.data;
@@ -96,7 +96,7 @@ const WithdrawPage = ({depositSuccessMessage = "Deposit successful",
         if (!pendingDeposit) return;
 
         try {
-            const response = await axios.get(`http://localhost:8086/api/v1/customer/checkDepositStatus/${pendingDeposit}`);
+            const response = await axios.get(`https://api.nextcents.com/api/v1/customer/checkDepositStatus/${pendingDeposit}`);
             const { paymentStatus, balance: updatedBalance } = response.data;
 
             if (paymentStatus === 'approved') {
@@ -111,7 +111,7 @@ const WithdrawPage = ({depositSuccessMessage = "Deposit successful",
     };
 
     const refreshWallet = async (walletId) => {
-        fetch(`http://localhost:8086/api/v1/customer/viewCustomerWallet/${walletId}`, {
+        fetch(`https://api.nextcents.com/api/v1/customer/viewCustomerWallet/${walletId}`, {
             method: "GET"
         })
             .then(async response => {

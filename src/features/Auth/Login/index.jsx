@@ -24,7 +24,7 @@ const Login = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:8086/api/v1/customer/login', {
+            const response = await fetch('https://api.nextcents.com/api/v1/customer/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
