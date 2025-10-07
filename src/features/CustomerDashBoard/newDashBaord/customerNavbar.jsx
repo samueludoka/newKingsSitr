@@ -56,7 +56,7 @@ const CustomerNavbar = () => {
     }
 
     const refreshWallet = async (walletId) => {
-        fetch(`http://localhost:8086/api/v1/customer/viewCustomerWallet/${walletId}`, {
+        fetch(`https://api.nextcents.com/api/v1/customer/viewCustomerWallet/${walletId}`, {
             method: "GET"
         })
             .then(async response => {

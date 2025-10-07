@@ -85,7 +85,7 @@ const InvestComponent = () => {
                 amount,
             };
 
-            const response = await axios.post('http://localhost:8086/api/v1/customer/initiateTrade', payload);
+            const response = await axios.post('https://api.nextcents.com/api/v1/customer/initiateTrade', payload);
 
             const { walletId, tradeStatus, updatedAmount } = response.data;
 
@@ -106,7 +106,7 @@ const InvestComponent = () => {
 
 
     const refreshWallet = async (walletId) => {
-        fetch(`http://localhost:8086/api/v1/customer/viewCustomerWallet/${walletId}`, {
+        fetch(`https://api.nextcents.com/api/v1/customer/viewCustomerWallet/${walletId}`, {
             method: "GET"
         })
             .then(async response => {

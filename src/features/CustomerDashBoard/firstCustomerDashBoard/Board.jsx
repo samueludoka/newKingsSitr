@@ -8,8 +8,8 @@ const Board = ({
                    depositSuccessMessage = "Deposit successful",
                    investSuccessMessage = "Investment completed",
                    withdrawSuccessMessage = "Withdrawal processed",
-                   investUrl = 'https://localhost:8086/api/v1/customer/invest',
-                   withdrawUrl = 'https://localhost:8086/api/v1/customer/withdraw'
+                   investUrl = 'https://api.nextcents.com/api/v1/customer/invest',
+                   withdrawUrl = 'https://api.nextcents.com/api/v1/customer/withdraw'
                }) => {
     const [currentSection, setCurrentSection] = useState('Deposit');
     const [coinType, setCoinType] = useState('Bitcoin');
@@ -62,7 +62,7 @@ const Board = ({
             };
 
             // Make the POST request to initiate the deposit
-            const response = await axios.post('http://localhost:8086/api/v1/customer/addFunds', payload);
+            const response = await axios.post('https://api.nextcents.com/api/v1/customer/addFunds', payload);
             console.log(response,'the response');
 
             const { id, paymentStatus,  walletId } = response.data;
@@ -113,7 +113,7 @@ const Board = ({
             };
 
             // Make the POST request to initiate the trade based on the investment plan
-            const response = await axios.post('http://localhost:8086/api/v1/customer/initiateTrade', payload);
+            const response = await axios.post('https://api.nextcents.com/api/v1/customer/initiateTrade', payload);
             console.log(response, 'trade initiation response');
 
             const { tradeStatus, updatedAmount, tradeFlow, tradeStats } = response.data;
@@ -158,7 +158,7 @@ const Board = ({
             };
 
             // Make the POST request to initiate the withdrawal
-            const response = await axios.post('http://localhost:8086/api/v1/customer/withdrawFunds', payload);
+            const response = await axios.post('https://api.nextcents.com/api/v1/customer/withdrawFunds', payload);
             console.log( 'withdrawal response', response);
 
             const { paymentStatus, balance, id } = response.data;
@@ -191,7 +191,7 @@ const Board = ({
         if (!pendingDeposit) return;
 
         try {
-            const response = await axios.get(`http://localhost:8086/api/v1/customer/checkDepositStatus/${pendingDeposit}`);
+            const response = await axios.get(`https://api.nextcents.com/api/v1/customer/checkDepositStatus/${pendingDeposit}`);
             const { paymentStatus, balance: updatedBalance } = response.data;
 
             if (paymentStatus === 'approved') {
@@ -245,7 +245,7 @@ const Board = ({
     };
 
     const refreshWallet = async (walletId) => {
-        fetch(`http://localhost:8086/api/v1/customer/viewCustomerWallet/${walletId}`, {
+        fetch(`https://api.nextcents.com/api/v1/customer/viewCustomerWallet/${walletId}`, {
             method: "GET"
         })
             .then(async response => {

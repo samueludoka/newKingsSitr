@@ -27,7 +27,7 @@ const OtpVerification = () => {
             }
 
             // Construct the URL with the saved email and the OTP from the input field
-            const url = `http://localhost:8086/api/v1/customer/verifyOtp/${encodeURIComponent(otp)}/${encodeURIComponent(savedEmail)}`;
+            const url = `https://api.nextcents.com/api/v1/customer/verifyOtp/${encodeURIComponent(otp)}/${encodeURIComponent(savedEmail)}`;
 
             // Make an API request to verify the OTP
             const response = await axios.post(url, { otp, email: savedEmail });

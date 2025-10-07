@@ -27,7 +27,7 @@ const Register = () => {
     useEffect(() => {
         const fetchCountries = async () => {
             try {
-                const response = await axios.get('http://localhost:8086/api/v1/customer/countries');
+                const response = await axios.get('https://api.nextcents.com/api/v1/customer/countries');
                 setCountries(response.data);
             } catch (error) {
                 console.error('Error fetching countries:', error);
