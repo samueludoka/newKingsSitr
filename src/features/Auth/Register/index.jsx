@@ -69,7 +69,7 @@ const Register = () => {
         console.log("The formData: ", formData);
 
         try {
-            const response = await fetch('http://localhost:8086/api/v1/customer/register', {
+            const response = await fetch('https://api.nextcents.com/api/v1/customer/register', {
                 method: "POST",
                 body: JSON.stringify(formData),
                 headers: { 'Content-Type': 'application/json' }
