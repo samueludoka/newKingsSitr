@@ -24,7 +24,7 @@ const ResetPassword = () => {
         }
 
         try {
-            const url = `http://localhost:8086/api/v1/customer/changePassword/${encodeURIComponent(savedEmail)}`;
+            const url = `https://api.nextcents.com/api/v1/customer/changePassword/${encodeURIComponent(savedEmail)}`;
             console.log('Constructed URL:', url);
 
             await axios.post(url, {
