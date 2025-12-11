@@ -1,17 +1,17 @@
 .mainContent {
     /*background-color: black;*/
     display: flex;
-    background-color: #3d3b3b;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b3d 100%);
     padding:  5%;
     /*padding-bottom: 5rem;*/
 
 }
 
 .world {
-    width: 80%; /* Adjust image size for responsiveness */
-    max-width: 400px; /* Limit the maximum size */
+    width: 80%; 
+    max-width: 400px;
     height: auto;
-    margin-bottom: 1rem; /* Space between image and text */
+    margin-bottom: 1rem; 
     align-items: center;
 
 }

@@ -1,293 +1,220 @@
 import styles from "../newDashBaord/customerNavbar.module.css";
-import logo from "../newDashBaord/images/logo-no-background.png"
-import contact from "../newDashBaord/images/img.png";
-import deposit from "../newDashBaord/images/img_1.png"
-import withdraw from "../newDashBaord/images/img_2.png"
-import invest from "../newDashBaord/images/img_3.png"
-import log from "../newDashBaord/images/img_4.png"
-import signal from "../newDashBaord/images/img_5.png"
-import upgradeAccount from "../newDashBaord/images/img_6.png"
-import plan from "../newDashBaord/images/img_7.png"
-import accountVerified from "../newDashBaord/images/img_8.png"
-import home from "../newDashBaord/images/img_9.png"
-import logout from "../newDashBaord/images/img_10.png"
-import backg from "../newDashBaord/images/img_11.png"
+import logo from "../newDashBaord/images/logo-no-background.png";
+import backg from "../newDashBaord/images/img_11.png";
 
-import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend } from 'chart.js';
-import axios from 'axios';
-import {Link} from "@mui/material";
-import {useNavigate} from "react-router-dom";
-// import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import axios from "axios";
+import { Router, useNavigate } from "react-router-dom";
+import {
+  IoHomeOutline,
+  IoLogOutOutline,
+  IoArrowDownCircleOutline,
+  IoArrowUpCircleOutline,
+  IoTrendingUpOutline,
+  IoKeyOutline,
+  IoPersonCircleOutline,
+  IoDocumentTextOutline,
+  IoDiamondOutline,
+  IoMenu,
+  IoClose,
+} from "react-icons/io5";
 
-
-// Register the necessary components
 Chart.register(CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend);
 
-
-
-
 const CustomerNavbar = () => {
-    const [chartData, setChartData] = useState(null);
-    const [copySuccess, setCopySuccess] = useState('');
-    const navigate = useNavigate();
-    const navigate1 = useNavigate();
-    const navigate2 = useNavigate()
-    const [depositAmount] = useState('');
-    const [refresh, setRefreshWallet] = useState()
-    const [id, setId] = useState(0)
-    const [customerWalletId, setCustomerWalletId] = useState('');
-    const investmentAmount = sessionStorage.getItem("investmentAmount") || '0'; // Fallback to '0' if no amount is stored
-    const totalWithdrawnAmount = sessionStorage.getItem("totalWithdrawnAmount") || '0'; // Default to '0' if not set
+  const [chartData, setChartData] = useState(null);
+  const [copySuccess, setCopySuccess] = useState("");
+  const [refresh, setRefreshWallet] = useState();
+  const [isOpen, setIsOpen] = useState(false); // sidebar toggle
+  const navigate = useNavigate();
 
+  const walletId = sessionStorage.getItem("walletId");
+  const investmentAmount = sessionStorage.getItem("investmentAmount") || "0";
+  const totalWithdrawnAmount = sessionStorage.getItem("totalWithdrawnAmount") || "0";
 
+  const handleNavigate = (path) => {
+    navigate(path);
+    setIsOpen(false); // close menu after click on mobile
+  };
 
-
-
-    const handleNavigate = () => {
-        navigate("/deposit");
-    };
-    const handleNavigate1 = () => {
-        navigate1('/withdraw');
-    };
-    const handleNavigate2 = () => {
-        navigate2('/invest')
+  const refreshWallet = async (walletId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8086/api/v1/customer/viewCustomerWallet/${walletId}`
+      );
+      if (!response.ok) throw new Error("Failed to refresh dashboard");
+      const data = await response.json();
+      setRefreshWallet(data?.balance);
+    } catch (e) {
+      console.error(e);
     }
+  };
 
-    const refreshWallet = async (walletId) => {
-        fetch(`https://api.nextcents.com/api/v1/customer/viewCustomerWallet/${walletId}`, {
-            method: "GET"
-        })
-            .then(async response => {
-                if (!response.ok) {
-                    throw new Error('Failed to refresh dash board');
-                }
-                console.log("The response: ", response)
-                const deResponse = await response.json()
-                setRefreshWallet(deResponse?.balance)
-                return response.json();
-            })
-            .catch(error => {
-                // setError(error.message);
-            });
-    };
-    const walletId = sessionStorage.getItem('walletId')
+  useEffect(() => {
+    if (walletId) refreshWallet(walletId);
+  }, [walletId]);
 
+  useEffect(() => {
+    const fetchOHLC = async () => {
+      try {
+        const response = await axios.get(
+          "https://min-api.cryptocompare.com/data/v2/histohour",
+          {
+            params: {
+              fsym: "BTC",
+              tsym: "USD",
+              limit: 24,
+              api_key: "691894f917baad35409bb00095f13eaa2faf1655f975694633f95dfb859c9a44",
+            },
+          }
+        );
 
-    useEffect(() => {
-        if( walletId){
-            refreshWallet(walletId).then(r =>  {
-                console.log("r:", r)
-            }).catch(error => {
-                console.error('Error checking for approval:', error);
-            })
-        }
-    },[id])
+        const ohlc = response.data.Data.Data;
+        const labels = ohlc.map((e) => new Date(e.time * 1000).toLocaleTimeString());
 
-
-
-
-    useEffect(() => {
-        const fetchOHLC = async () => {
-            try {
-                const response = await axios.get(
-                    'https://min-api.cryptocompare.com/data/v2/histohour',
-                    {
-                        params: {
-                            fsym: 'BTC',
-                            tsym: 'USD',
-                            limit: 24,
-                            api_key: '691894f917baad35409bb00095f13eaa2faf1655f975694633f95dfb859c9a44'
-                        }
-                    }
-                );
-
-                const ohlc = response.data.Data.Data;
-
-                // Prepare labels and data arrays
-                const labels = ohlc.map((entry) => new Date(entry.time * 1000).toLocaleTimeString());
-                const openPrices = ohlc.map((entry) => entry.open);
-                const highPrices = ohlc.map((entry) => entry.high);
-                const lowPrices = ohlc.map((entry) => entry.low);
-                const closePrices = ohlc.map((entry) => entry.close);
-
-                // Set the chart data
-                setChartData({
-                    labels,
-                    datasets: [
-                        {
-                            label: 'Open',
-                            data: openPrices,
-                            borderColor: 'green',
-                            fill: false,
-                        },
-                        {
-                            label: 'High',
-                            data: highPrices,
-                            borderColor: 'blue',
-                            fill: false,
-                        },
-                        {
-                            label: 'Low',
-                            data: lowPrices,
-                            borderColor: 'red',
-                            fill: false,
-                        },
-                        {
-                            label: 'Close',
-                            data: closePrices,
-                            borderColor: 'orange',
-                            fill: false,
-                        },
-                    ],
-                });
-            } catch (error) {
-                console.error('Error fetching OHLC data:', error);
-            }
-        };
-
-        fetchOHLC();
-    }, []);
-
-    const referralLink = "https://yourwebsite.com/referral?code=123456"; // Replace with the dynamic referral link
-
-    const copyToClipboard = () => {
-        navigator.clipboard.writeText(referralLink).then(() => {
-            setCopySuccess('Copied!');
-            setTimeout(() => setCopySuccess(''), 2000); // Clear message after 2 seconds
-        }).catch(err => {
-            setCopySuccess('Failed to copy');
+        setChartData({
+          labels,
+          datasets: [
+            { label: "Open", data: ohlc.map((e) => e.open), borderColor: "green" },
+            { label: "High", data: ohlc.map((e) => e.high), borderColor: "blue" },
+            { label: "Low", data: ohlc.map((e) => e.low), borderColor: "red" },
+            { label: "Close", data: ohlc.map((e) => e.close), borderColor: "orange" },
+          ],
         });
+      } catch (e) {
+        console.error("Error fetching OHLC data:", e);
+      }
     };
+    fetchOHLC();
+  }, []);
 
-    return (
-        <div className={styles.CUSTOMER} style={{position: "fixed"}}>
-            <div className={styles.navbar}>
-                <img src={logo} alt={" "} className={styles.logo}/>
-            </div>
+  const referralLink = "https://yourwebsite.com/referral?code=123456";
 
-            <div className={styles.sidebar}>
-                <h2>Dashboard</h2>
-                <ul className={styles.sidebarlist}>
-                    <li className={styles.sidebaritem}>
-                        <h3>Funds</h3>
-                        <ul className={styles.sublist}>
-                            <li onClick={handleNavigate} className={styles.navItem}><a href="#">
-                                <img src={deposit} alt="Deposit Funds" className={styles.fasfamoneybill}/>
-                                <span className={styles.depositText}> Deposit Funds</span>
-                            </a></li>
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(referralLink)
+      .then(() => {
+        setCopySuccess("Copied!");
+        setTimeout(() => setCopySuccess(""), 2000);
+      })
+      .catch(() => setCopySuccess("Failed to copy"));
+  };
 
-                            <li onClick={handleNavigate1} className={styles.navItem}><a href="#">
-                                <img src={withdraw} alt="Withdraw Funds" className={styles.fasfacreditcard}/>
-                                <span className={styles.withdrawText}> Withdraw Funds</span>
-                            </a></li>
+  
+  const handleNavClick = (path) => {
+    navigate(path);
+  }
 
-                            <li onClick={handleNavigate2} className={styles.navItem}><a href="#">
-                                <img src={invest} alt="Withdraw Funds" className={styles.fasfachartline}/>
-                                <span className={styles.investText}> Invest Funds </span>
-                            </a></li>
+  return (
+    <div className={styles.wrapper}>
+      {/* Mobile Toggle Button */}
+      <button className={styles.menuToggle} onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+      </button>
 
-                            <h3>Others</h3>
-                            <li><a href="#">
-                                <img src={signal} alt="Withdraw Funds" className={styles.fasfasignal}/>
-                                <span className={styles.purchaseText}> Purchase Signals</span>
-                            </a></li>
+      <div className={styles.wrapper}>
+  {/* Sidebar */}
+  <aside className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
+    <div className={styles.logoWrapper}>
+      <img src={logo} alt="Logo" className={styles.logo} />
+      {/* <h2>Dashboard</h2> */}
+    </div>
+    <ul className={styles.menu}>
+      <h3>Funds</h3>
+      <li onClick={() => handleNavigate("/deposit")}>
+        <IoArrowDownCircleOutline size={20} /> Deposit Funds
+      </li>
+      <li onClick={() => handleNavigate("/withdraw")}>
+        <IoArrowUpCircleOutline size={20} /> Withdraw Funds
+      </li>
+      <li onClick={() => handleNavigate("/invest")}>
+        <IoTrendingUpOutline size={20} /> Invest Funds
+      </li>
 
-                            <li><a href="#">
-                                <img src={upgradeAccount} alt="Withdraw Funds" className={styles.fasfausershield}/>
-                                <span className={styles.upgradeText}>Upgrade Account</span>
-                            </a></li>
+      <h3>Others</h3>
+      <li>
+        <IoKeyOutline size={20} /> Purchase Signals
+      </li>
+      <li>
+        <IoDiamondOutline size={20} /> Upgrade Account
+      </li>
+      <li>
+        <IoDocumentTextOutline size={20} /> My Plans
+      </li>
+      <li>
+        <IoPersonCircleOutline size={20} /> Verify Account
+      </li>
+      <li onClick={()=>handleNavClick("/home")}>
+        <IoHomeOutline size={20} /> Home
+      </li>
+      <li>
+        <IoLogOutOutline size={20} /> Logout
+      </li>
+    </ul>
+  </aside>
 
-                            <li><a href="#">
-                                <img src={plan} alt="Withdraw Funds" className={styles.fasfaclipboardlist}/>
-                                <span className={styles.planText}> My Plans</span>
-                            </a></li>
+  {/* Main content */}
+  <main className={styles.maincontent}>
+    {/* Mobile Toggle Button */}
+    <button className={styles.menuToggle} onClick={() => setIsOpen(!isOpen)}>
+      {isOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+    </button>
 
-                            <li><a href="#">
-                                <img src={accountVerified} alt="Withdraw Funds"
-                                     className={styles.fasfacheckcircle}/>
-                                <span className={styles.verifyText}> Verify Account</span></a></li>
+    <img src={backg} alt="background" className={styles.background} />
+    <div className={styles.AccountBalance}>
+      <div className={styles.depositBalance}>
+        <p>Deposits</p>
+        <p className="text-yellow-400 font-bold">${refresh}</p>
+      </div>
+      <div className={styles.profits}>
+        <p>Invests</p>
+        <p>Amount Invested: ${investmentAmount}</p>
+      </div>
+      <div className={styles.withdraw}>
+        <p>Total Withdraw</p>
+        <p>Total Withdrawn Amount: ${totalWithdrawnAmount}</p>
+      </div>
+    </div>
 
-                            <li><a href="#">
-                                <img src={home} alt="Withdraw Funds" className={styles.fasfahome}/>
-                                <span className={styles.HomeText}>Home</span>
-                            </a></li>
+    <section className={styles.flexContainer}>
+      <div className={styles.chartContainer}>
+        <h2>Bitcoin OHLC Chart (Last 24 Hours)</h2>
+        {chartData ? <Line data={chartData} /> : <p>Loading OHLC data...</p>}
+      </div>
 
-                            <li><a href="#">
-                                <img src={logout} alt={""} className={styles.fasfasignoutalt}/>
-                                <span className={styles.logText}> Logout</span>
-                            </a></li>
-
-
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div className={styles.maincontent}>
-                <img src={backg} alt={""} className={styles.background}/>
-
-                <div className={styles.AccountBalance}>
-
-                    <div className={styles.depositBalance}>
-                        <p>{`${depositAmount}`}</p>
-                        <p>Deposits</p>
-                        <div>
-                            <p className="text-white"> <span
-                                className="font-bold text-yellow-400">${refresh}</span></p>
-                        </div>
-                    </div>
-
-                    <div className={styles.profits}>
-                        <p>Invests</p>
-                        <p>{`Amount Invested: $${investmentAmount}`}</p>
-                    </div>
-
-
-                    <div className={styles.withdraw}>
-                        <p>Total Withdraw</p>
-                        <p>{`Total Withdrawn Amount: $${totalWithdrawnAmount}`}</p>
-                    </div>
-
-                </div>
-                <h1>Bitcoin Growth Schedule</h1>
-                <div className={styles.flexContainer}> {/* Add a new wrapper */}
-                    <div className={styles.chartContainer} style={{zIndex: 100}}>
-                        <h2>Bitcoin OHLC Chart (Last 24 Hours)</h2>
-                        {chartData ? (
-                            <Line data={chartData}/>
-                        ) : (
-                            <p>Loading OHLC data...</p>
-                        )}
-                    </div>
-
-                    <div className={styles.container}>
-                        <h1>Personal Referral Link</h1>
-                        <div className={styles.linkContainer}>
-                            <span className={styles.referralLink}>{referralLink}</span>
-                            <button onClick={copyToClipboard} className={styles.copyButton}>
-                                Copy
-                            </button>
-                        </div>
-                        {copySuccess && <p className={styles.copyMessage}>{copySuccess}</p>}
-                        <div className={styles.referralEx}>
-                            <h1>Rerrals</h1>
-                            <p>Present our project to your friends, family,
-                                <br/>or any other community and enjoy
-                                <br/>the financial benefits. You don't even
-                                <br/>need an active deposit to receive affiliate
-                                <br/>commission.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+      <div className={styles.container}>
+        <h1>Personal Referral Link</h1>
+        <div className={styles.linkContainer}>
+          <span className={styles.referralLink}>{referralLink}</span>
+          <button onClick={copyToClipboard} className={styles.copyButton}>
+            Copy
+          </button>
         </div>
+        {copySuccess && <p className={styles.copyMessage}>{copySuccess}</p>}
+        <div className={styles.referralEx}>
+          <h1>Referrals</h1>
+          <p>
+            Present our project to your friends, family, or community and enjoy the
+            benefits. No active deposit is required to receive commissions.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
 
+    </div>
+  );
+};
 
-    );
-}
 export default CustomerNavbar;

@@ -1,58 +1,69 @@
-import logo from "./images/logo-no-background.png"
-import style from "./index.module.css"
+import logo from "./images/logo-no-background.png";
+import style from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 
-const Footer = ()=>{
-    const date = new Date().getFullYear()
+const Footer = () => {
+  const date = new Date().getFullYear();
+  const navigate = useNavigate();
 
-    return(
-        <div className={style.mainCont}>
-
-            <div className={style.mainDiv}>
-                <div className={style.firstDiv}>
-                    {/*<img src={logo} alt={""} className={style.logo}/>*/}
-                    <h1>Nexcents</h1>
-                </div>
-                <p>Copyright © {date} Nexcent ltd.</p>
-                <p>All rights reserved</p>
-
-                <div className={style.socialIcon}>
-                    <p>Sound Management Practices; Competent &
-                        <br/>Credible Traders; User Friendly Policies,
-                        <br/>Procedures and Systems;Proactive Service <br/>
-                        Philosophy and Strategy; Multiple Support Channels;</p>
-                </div>
-            </div>
+  const handleClick = (page) => {
+    navigate(page);
+    
+};
 
 
-            <div className={style.company}>
-                <h3>Company</h3>
-                <div className={style.companyPara}>
-                    <p> >> Home</p>
-                    <p> >> Service</p>
-                    <p> >> Buy Crypto</p>
-                    <p> >> About</p>
-                    <p> >> Product</p>
-                    <p> >> FAQ</p>
-                </div>
-            </div>
-
-            <div className={style.company}>
-                <h3>Register</h3>
-                <div className={style.companyPara}>
-                    <p> >> sign up</p>
-                    <p> >> login</p>
-                    <p> >> account</p>
-                </div>
-            </div>
-
-            <div className={style.company}>
-                <h3>Contact</h3>
-                <p>support@nextcents.com</p>
-            </div>
-
-
+  return (
+    <footer className={style.footer}>
+      <div className={style.container}>
+        
+        {/* Brand / About */}
+        <div className={style.brand}>
+          <div className={style.logoRow}>
+            <img src={logo} alt="Nexcent Logo" className={style.logo} />
+            <h1 className={style.brandName}>Nexcent</h1>
+          </div>
+          <p className={style.copy}>
+            Copyright © {date} Nexcent Ltd. <br /> All rights reserved.
+          </p>
+          <p className={style.motto}>
+            Sound Management Practices; Competent & Credible Traders; <br />
+            User Friendly Policies, Procedures and Systems; <br />
+            Proactive Service Philosophy and Strategy; <br />
+            Multiple Support Channels.
+          </p>
         </div>
-    )
-}
+
+        {/* Company Links */}
+        <div className={style.column}>
+          <h3>Company</h3>
+          <ul>
+            <li onClick={()=>handleClick("/home")}>Home</li>
+            <li onClick={()=>handleClick("/service")}>Service</li>
+            <li onClick={()=>handleClick("/home")} >Buy Crypto</li>
+            <li onClick={()=>handleClick("/about")}>About</li>
+            <li>Product</li>
+            <li onClick={()=>handleClick("/FAQss")}>FAQ</li>
+          </ul>
+        </div>
+
+        {/* Register Links */}
+        <div className={style.column}>
+          <h3>Register</h3>
+          <ul>
+            <li onClick={()=>handleClick("/sign-up")}>Sign Up</li>
+            <li onClick={()=>handleClick("/login")}>Login</li>
+            <li onClick={()=>handleClick("/customerDashboard2")}>Account</li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className={style.column}>
+          <h3>Contact</h3>
+          <p className={style.contact}>support@nextcents.com</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

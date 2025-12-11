@@ -1,6 +1,6 @@
 .mainContent {
     color: #FFFFFF;
-    background-color: #3e4443;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b3d 100%);
     font-size: 1.5rem; /* Adjust font size for readability */
     padding: 5%; /* Padding adjusted for smaller screens */
     padding-left: 2rem;
